@@ -2,9 +2,9 @@
     "name": "accurate",
     "version": "0.1.0",
     "description": "accuracy calculation for js",
-    "main": "dist/accurate.min.js",
+    "main": "./libs/umd.js",
     "scripts": {
-        "build": ""
+        "build": "rollup --config ./build/rollup.config.js"
     },
     "repository": {
         "type": "git",
@@ -16,5 +16,16 @@
     ],
     "author": "Jonas Hsiao",
     "license": "MIT",
-    "homepage": "https://github.com/Ipxxiao/accurate"
+    "homepage": "https://github.com/Ipxxiao/accurate",
+    "devDependencies": {
+        "@babel/core": "^7.1.2",
+        "@babel/plugin-transform-runtime": "^7.1.0",
+        "@babel/preset-env": "^7.1.0",
+        "rollup": "^0.66.6",
+        "rollup-plugin-babel": "^4.0.3",
+        "rollup-plugin-commonjs": "^9.2.0",
+        "rollup-plugin-node-resolve": "^3.4.0",
+        "rollup-plugin-terser": "^3.0.0",
+        "rollup-plugin-uglify": "^6.0.0"
+    }
 }
