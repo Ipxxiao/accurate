@@ -1,0 +1,20 @@
+{
+    "name": "accurate",
+    "version": "0.1.0",
+    "description": "accuracy calculation for js",
+    "main": "dist/accurate.min.js",
+    "scripts": {
+        "build": ""
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Ipxxiao/accurate.git"
+    },
+    "keywords": [
+        "accurate",
+        "accuracy calculation"
+    ],
+    "author": "Jonas Hsiao",
+    "license": "MIT",
+    "homepage": "https://github.com/Ipxxiao/accurate"
+}
