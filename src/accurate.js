@@ -31,6 +31,19 @@ module.exports = {
 
         return temp / m;
     },
+    subtract(arg1, arg2) { // 精度减法计算
+        if (isNaN(arg1) || typeof arg1 != 'number') {
+            console.warn('The arg1 parameter type of the subtract function is not a number');
+            return NaN;
+        } else if (isNaN(arg2) || typeof arg2 != 'number') {
+            console.warn('The arg2 parameter type of the subtract function is not a number');
+            return NaN;
+        }
+
+        let me = this;
+
+        me.add(arg1, -arg2);
+    },
     mul(arg1, arg2) { // 精度乘法计算
         if (isNaN(arg1) || typeof arg1 != 'number') {
             console.warn('The arg1 parameter type of the mul function is not a number');

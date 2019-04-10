@@ -1,10 +1,11 @@
 {
     "name": "accurate",
-    "version": "0.1.0",
+    "version": "1.0.0",
     "description": "accuracy calculation for js",
     "main": "./libs/umd.js",
     "scripts": {
-        "build": "rollup --config ./build/rollup.config.js"
+        "build": "rollup --config ./build/rollup.config.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
     },
     "repository": {
         "type": "git",
@@ -27,5 +28,8 @@
         "rollup-plugin-node-resolve": "^3.4.0",
         "rollup-plugin-terser": "^3.0.0",
         "rollup-plugin-uglify": "^6.0.0"
+    },
+    "directories": {
+      "test": "test"
     }
 }
