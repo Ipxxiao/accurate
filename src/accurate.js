@@ -42,7 +42,7 @@ module.exports = {
 
         let me = this;
 
-        me.add(arg1, -arg2);
+        return me.add(arg1, -arg2);
     },
     mul(arg1, arg2) { // 精度乘法计算
         if (isNaN(arg1) || typeof arg1 != 'number') {
