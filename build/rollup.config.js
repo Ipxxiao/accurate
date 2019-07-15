@@ -12,7 +12,7 @@ let cfgs = []
 
 tps.map(item => {
 	cfgs.push({
-		input: 'src/accurate.js',
+		input: 'src/index.js',
 		external: ['jquery', 'moment', 'lodash'],
 		output: {
 			format: item,
