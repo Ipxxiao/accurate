@@ -1,6 +1,6 @@
 {
   "name": "accurate",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "accuracy calculation for js",
   "main": "./libs/umd.js",
   "scripts": {
