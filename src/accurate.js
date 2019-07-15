@@ -1,7 +1,7 @@
 function isNum(params) {
-    let flag = true;
+    var flag = true;
 
-    for (let i in params) {
+    for (var i in params) {
         try {
             if (isNaN(params[i]) || typeof params[i] != 'number') {
                 flag = false;
@@ -30,8 +30,8 @@ module.exports = {
             return NaN;
         }
 
-        let me = this;
-        let temp = 0,
+        var me = this;
+        var temp = 0,
             l1 = 0,
             l2 = 0,
             m = 0;
@@ -50,7 +50,7 @@ module.exports = {
             return NaN;
         }
 
-        let me = this;
+        var me = this;
 
         return me.add(num1, -num2);
     },
@@ -60,8 +60,8 @@ module.exports = {
             return NaN;
         }
 
-        let me = this;
-        let temp = 0,
+        var me = this;
+        var temp = 0,
             l1 = 0,
             l2 = 0,
             m = 0,
@@ -82,8 +82,8 @@ module.exports = {
             return NaN;
         }
 
-        let me = this;
-        let temp = 0,
+        var me = this;
+        var temp = 0,
             l1 = 0,
             l2 = 0,
             m = 0,
@@ -104,8 +104,8 @@ module.exports = {
             return NaN;
         }
 
-        let me = this;
-        let temp = 0,
+        var me = this;
+        var temp = 0,
             l1 = 0,
             l2 = 0,
             m = 0;
