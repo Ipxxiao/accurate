@@ -1,5 +1,3 @@
-import 'babel-core/register';
-import 'babel-polyfill';
 
 function isNum(params) {
 	var flag = true;
@@ -26,7 +24,7 @@ function getDecimalDigits(num) {
 	}
 }
 
-module.exports = {
+export default {
 	// 精度加法计算
 	add(num1, num2) {
 		if (!isNum(arguments)) {
