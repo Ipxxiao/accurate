@@ -1,6 +1,6 @@
 {
     "name": "accurate",
-    "version": "1.0.6",
+    "version": "1.0.7",
     "description": "accuracy calculation for js",
     "main": "./libs/umd.js",
     "scripts": {
@@ -13,6 +13,8 @@
     },
     "keywords": [
         "accurate",
+        "accuracy",
+        "accuracy calc",
         "accuracy calculation"
     ],
     "author": "Jonas Hsiao",
@@ -30,6 +32,6 @@
         "rollup-plugin-uglify": "^6.0.0"
     },
     "directories": {
-      "test": "test"
+        "test": "test"
     }
 }
