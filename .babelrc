@@ -1,0 +1,13 @@
+{
+    "presets": [
+        ["@babel/env", {
+            "modules": false,
+            "useBuiltIns": "usage"
+        }],
+        "@babel/typescript"
+    ],
+    "plugins": [
+        "@babel/transform-runtime"
+    ]
+
+}
