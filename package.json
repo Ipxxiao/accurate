@@ -5,8 +5,16 @@
     "main": "./libs/umd.js",
     "scripts": {
         "build": "rollup --config ./build/rollup.config.js",
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "cd test && node index.js",
+        "server": "NODE_ENV=production  GATEWAY=outer    node ./server/index.js",
+        "clean": "node ./build/scripts/clean",
+        "release": "node ./build/scripts/release"
     },
+    "files": [
+        "libs/*",
+        "src/*",
+        "types/*"
+    ],
     "repository": {
         "type": "git",
         "url": "https://github.com/Ipxxiao/accurate.git"
@@ -33,5 +41,9 @@
     },
     "directories": {
         "test": "test"
+    },
+    "dependencies": {
+        "fs-extra": "^8.1.0",
+        "glob": "^7.1.4"
     }
 }
