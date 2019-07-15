@@ -73,7 +73,7 @@ export default {
 		l2 = getDecimalDigits(num2);
 
 		m = 10 ** (l1 + l2);
-		temp = Number(s1.replace('.', '')) * Number(s2.replace('.', ''));
+		temp = Number.parseInt(s1.replace('.', '')) * Number.parseInt(s2.replace('.', ''));
 
 		return temp / m;
 	},
@@ -95,7 +95,7 @@ export default {
 		l2 = getDecimalDigits(num2);
 
 		m = 10 ** (l2 - l1);
-		temp = Number(s1.replace('.', '')) / Number(s2.replace('.', ''));
+		temp = Number.parseInt(s1.replace('.', '')) / Number.parseInt(s2.replace('.', ''));
 
 		return me.mul(temp, m);
 	},

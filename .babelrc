@@ -4,7 +4,11 @@
 			"modules": false,
 			"corejs": "3.0.0",
             "useBuiltIns": "usage"
-        }]
+        }],
+        "@babel/typescript"
+    ],
+    "plugins": [
+        "@babel/transform-runtime"
     ]
 
 }
