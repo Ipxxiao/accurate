@@ -12,7 +12,7 @@ let cfgs = []
 
 tps.map(item => {
 	cfgs.push({
-		input: 'src/index.js',
+		input: 'src/index.ts',
 		external: ['jquery', 'moment', 'lodash'],
 		output: {
 			format: item,
