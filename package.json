@@ -1,49 +1,50 @@
 {
-    "name": "accurate",
-    "version": "1.0.7",
-    "description": "accuracy calculation for js",
-    "main": "./libs/umd.js",
-    "scripts": {
-        "build": "rollup --config ./build/rollup.config.js",
-        "test": "cd test && node index.js",
-        "server": "NODE_ENV=production  GATEWAY=outer    node ./server/index.js",
-        "clean": "node ./build/scripts/clean",
-        "release": "node ./build/scripts/release"
-    },
-    "files": [
-        "libs/*",
-        "src/*",
-        "types/*"
-    ],
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/Ipxxiao/accurate.git"
-    },
-    "keywords": [
-        "accurate",
-        "accuracy",
-        "accuracy calc",
-        "accuracy calculation"
-    ],
-    "author": "Jonas Hsiao",
-    "license": "MIT",
-    "homepage": "https://github.com/Ipxxiao/accurate",
-    "devDependencies": {
-        "@babel/core": "^7.1.2",
-        "@babel/plugin-transform-runtime": "^7.1.0",
-        "@babel/preset-env": "^7.1.0",
-        "rollup": "^0.66.6",
-        "rollup-plugin-babel": "^4.0.3",
-        "rollup-plugin-commonjs": "^9.2.0",
-        "rollup-plugin-node-resolve": "^3.4.0",
-        "rollup-plugin-terser": "^3.0.0",
-        "rollup-plugin-uglify": "^6.0.0"
-    },
-    "directories": {
-        "test": "test"
-    },
-    "dependencies": {
-        "fs-extra": "^8.1.0",
-        "glob": "^7.1.4"
-    }
+  "name": "accurate",
+  "version": "1.0.7",
+  "description": "accuracy calculation for js",
+  "main": "./libs/umd.js",
+  "scripts": {
+    "build": "rollup --config ./build/rollup.config.js",
+    "test": "cd test && node index.js",
+    "server": "NODE_ENV=production  GATEWAY=outer    node ./server/index.js",
+    "clean": "node ./build/scripts/clean",
+    "release": "node ./build/scripts/release"
+  },
+  "files": [
+    "libs/*",
+    "src/*",
+    "types/*"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Ipxxiao/accurate.git"
+  },
+  "keywords": [
+    "accurate",
+    "accuracy",
+    "accuracy calc",
+    "accuracy calculation"
+  ],
+  "author": "Jonas Hsiao",
+  "license": "MIT",
+  "homepage": "https://github.com/Ipxxiao/accurate",
+  "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/plugin-transform-runtime": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
+    "rollup": "^0.66.6",
+    "rollup-plugin-babel": "^4.0.3",
+    "rollup-plugin-commonjs": "^9.2.0",
+    "rollup-plugin-node-resolve": "^3.4.0",
+    "rollup-plugin-terser": "^3.0.0",
+    "rollup-plugin-uglify": "^6.0.0"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "done-rainbow": "^0.1.2",
+    "fs-extra": "^8.1.0",
+    "glob": "^7.1.4"
+  }
 }

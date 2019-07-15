@@ -24,7 +24,8 @@ function getDecimalDigits(num) {
 }
 
 module.exports = {
-    add(num1, num2) { // 精度加法计算
+    // 精度加法计算
+    add(num1, num2) {
         if (!isNum(arguments)) {
             return NaN;
         }
@@ -43,7 +44,8 @@ module.exports = {
 
         return temp / m;
     },
-    subtract(num1, num2) { // 精度减法计算
+    // 精度减法计算
+    subtract(num1, num2) {
         if (!isNum(arguments)) {
             return NaN;
         }
@@ -52,7 +54,8 @@ module.exports = {
 
         return me.add(num1, -num2);
     },
-    mul(num1, num2) { // 精度乘法计算
+    // 精度乘法计算
+    mul(num1, num2) {
         if (!isNum(arguments)) {
             return NaN;
         }
@@ -73,7 +76,8 @@ module.exports = {
 
         return temp / m;
     },
-    division(num1, num2) { // 精度除法计算
+    // 精度除法计算
+    division(num1, num2) {
         if (!isNum(arguments)) {
             return NaN;
         }
@@ -94,7 +98,8 @@ module.exports = {
 
         return me.mul(temp, m);
     },
-    modulo(num1, num2) { // 精度取模计算
+    // 精度取模计算
+    modulo(num1, num2) {
         if (!isNum(arguments)) {
             return NaN;
         }
