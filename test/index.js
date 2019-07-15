@@ -1,4 +1,4 @@
-let accurate = require('../libs/umd')
+let accurate = require('../libs/umd');
 
 // list all of function name
 console.log(Object.keys(accurate));
