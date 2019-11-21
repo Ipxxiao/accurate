@@ -8,7 +8,7 @@ const isNum = (params: number[]): boolean => {
 	let flag = true;
 
 	for (let i in params) {
-		let item = params[i];
+		let item = Number(params[i]);
 
 		try {
 			if (isNaN(item) || typeof item != 'number') {

@@ -1,5 +1,5 @@
 # accurate
-accuracy calculation for js  
+accuracy calculation for js. 解决Javascript浮点运算精度问题。
 there have 6 modes of amd, cjs, es, iife, system, umd. 
 
 ## install
