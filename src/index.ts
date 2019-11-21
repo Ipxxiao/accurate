@@ -1,12 +1,21 @@
+/**
+ * 参数是否数值类型
+ *
+ * @param {number[]} params
+ * @returns {boolean}
+ */
+const isNum = (params: number[]): boolean => {
+	let flag = true;
 
-function isNum(params) {
-	var flag = true;
+	for (let i in params) {
+		let item = params[i];
 
-	for (var i in params) {
 		try {
-			if (isNaN(params[i]) || typeof params[i] != 'number') {
+			if (isNaN(item) || typeof item != 'number') {
+				let idx = Number(i);
+
 				flag = false;
-				throw new TypeError(`The ${++i}th parameter type is not a number`);
+				throw new TypeError(`The ${++idx}th parameter type is not a number`);
 			}
 		} catch (e) {
 			console.error(e);
@@ -16,7 +25,13 @@ function isNum(params) {
 	return flag;
 }
 
-function getDecimalDigits(num) {
+/**
+ * 获取小数位数
+ *
+ * @param {number} num
+ * @returns {number}
+ */
+const getDecimalDigits = (num: number): number => {
 	try {
 		return num.toString().split('.')[1].length;
 	} catch (e) {
@@ -24,101 +39,150 @@ function getDecimalDigits(num) {
 	}
 }
 
+/**
+ * 精度加法计算
+ *
+ * @param {number} num1
+ * @param {number} num2
+ * @returns {number}
+ */
+const add = (num1: number, num2: number): number => {
+	if (!isNum([num1, num2])) {
+		return NaN;
+	}
+
+	num1 = Number(num1);
+	num2 = Number(num2);
+
+	let temp = 0,
+		l1 = 0,
+		l2 = 0,
+		m = 0;
+
+	l1 = getDecimalDigits(num1);
+	l2 = getDecimalDigits(num2);
+
+	m = 10 ** Math.max(l1, l2);
+	temp = mul(num1, m) + mul(num2, m);
+
+	return temp / m;
+}
+
+/**
+ * 精度减法计算
+ *
+ * @param {number} num1
+ * @param {number} num2
+ * @returns {number}
+ */
+const subtract = (num1: number, num2: number): number => {
+	if (!isNum([num1, num2])) {
+		return NaN;
+	}
+
+	num1 = Number(num1);
+	num2 = Number(num2);
+
+	return add(num1, -num2);
+}
+
+/**
+ * 精度乘法计算
+ *
+ * @param {number} num1
+ * @param {number} num2
+ * @returns {number}
+ */
+const mul = (num1: number, num2: number): number => {
+	if (!isNum([num1, num2])) {
+		return NaN;
+	}
+
+	num1 = Number(num1);
+	num2 = Number(num2);
+
+	let temp = 0,
+		l1 = 0,
+		l2 = 0,
+		m = 0,
+		s1 = num1.toString(),
+		s2 = num2.toString();
+
+	l1 = getDecimalDigits(num1);
+	l2 = getDecimalDigits(num2);
+
+	m = 10 ** (l1 + l2);
+	temp = Number.parseInt(s1.replace('.', '')) * Number.parseInt(s2.replace('.', ''));
+
+	return temp / m;
+}
+
+/**
+ * 精度除法计算
+ *
+ * @param {number} num1
+ * @param {number} num2
+ * @returns {number}
+ */
+const division = (num1: number, num2: number): number => {
+	if (!isNum([num1, num2])) {
+		return NaN;
+	}
+
+	num1 = Number(num1);
+	num2 = Number(num2);
+
+	let temp = 0,
+		l1 = 0,
+		l2 = 0,
+		m = 0,
+		s1 = num1.toString(),
+		s2 = num2.toString();
+
+	l1 = getDecimalDigits(num1);
+	l2 = getDecimalDigits(num2);
+
+	m = 10 ** (l2 - l1);
+	temp = Number.parseInt(s1.replace('.', '')) / Number.parseInt(s2.replace('.', ''));
+
+	return mul(temp, m);
+}
+
+/**
+ * 精度取模计算
+ *
+ * @param {number} num1
+ * @param {number} num2
+ * @returns {number}
+ */
+const modulo = (num1: number, num2: number): number => {
+	if (!isNum([num1, num2])) {
+		return NaN;
+	}
+
+	num1 = Number(num1);
+	num2 = Number(num2);
+
+	let temp = 0,
+		l1 = 0,
+		l2 = 0,
+		m = 0;
+
+	l1 = getDecimalDigits(num1);
+	l2 = getDecimalDigits(num2);
+
+	m = 10 ** Math.max(l1, l2);
+	num1 = mul(num1, m);
+	num2 = mul(num2, m);
+	temp = num1 % num2;
+
+	return temp / m;
+}
+
 export default {
-	// 精度加法计算
-	add(num1, num2) {
-		if (!isNum(arguments)) {
-			return NaN;
-		}
-
-		var me = this;
-		var temp = 0,
-			l1 = 0,
-			l2 = 0,
-			m = 0;
-
-		l1 = getDecimalDigits(num1);
-		l2 = getDecimalDigits(num2);
-
-		m = 10 ** Math.max(l1, l2);
-		temp = me.mul(num1, m) + me.mul(num2, m);
-
-		return temp / m;
-	},
-	// 精度减法计算
-	subtract(num1, num2) {
-		if (!isNum(arguments)) {
-			return NaN;
-		}
-
-		var me = this;
-
-		return me.add(num1, -num2);
-	},
-	// 精度乘法计算
-	mul(num1, num2) {
-		if (!isNum(arguments)) {
-			return NaN;
-		}
-
-		var me = this;
-		var temp = 0,
-			l1 = 0,
-			l2 = 0,
-			m = 0,
-			s1 = num1.toString(),
-			s2 = num2.toString();
-
-		l1 = getDecimalDigits(num1);
-		l2 = getDecimalDigits(num2);
-
-		m = 10 ** (l1 + l2);
-		temp = Number.parseInt(s1.replace('.', '')) * Number.parseInt(s2.replace('.', ''));
-
-		return temp / m;
-	},
-	// 精度除法计算
-	division(num1, num2) {
-		if (!isNum(arguments)) {
-			return NaN;
-		}
-
-		var me = this;
-		var temp = 0,
-			l1 = 0,
-			l2 = 0,
-			m = 0,
-			s1 = num1.toString(),
-			s2 = num2.toString();
-
-		l1 = getDecimalDigits(num1);
-		l2 = getDecimalDigits(num2);
-
-		m = 10 ** (l2 - l1);
-		temp = Number.parseInt(s1.replace('.', '')) / Number.parseInt(s2.replace('.', ''));
-
-		return me.mul(temp, m);
-	},
-	// 精度取模计算
-	modulo(num1, num2) {
-		if (!isNum(arguments)) {
-			return NaN;
-		}
-
-		var me = this;
-		var temp = 0,
-			l1 = 0,
-			l2 = 0,
-			m = 0;
-
-		l1 = getDecimalDigits(num1);
-		l2 = getDecimalDigits(num2);
-
-		m = 10 ** Math.max(l1, l2);
-		num1 = me.mul(num1, m);
-		num2 = me.mul(num2, m);
-		temp = num1 % num2;
-
-		return temp / m;
-	},
+	add,
+	subtract,
+	mul,
+	division,
+	modulo,
 };
