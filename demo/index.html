@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>accurate</title>
+    <script src="../libs/umd.js"></script>
+
+    <script>
+        (function(e, d, a, h) {
+            var f = d.screen.width / a / d.devicePixelRatio;
+            h && e.querySelector("meta[name=viewport]").setAttribute("content",
+                "target-densitydpi=device-dpi,width=" + a + ",user-scalable=no,initial-scale=" + f);
+            var g = e.documentElement;
+            var c = "orientationchange" in window ? "orientationchange" : "resize";
+            d.setRootRem = function() {
+                g.style.fontSize = (h ? 10 : 100) * (g.clientWidth / a) + "px"
+            };
+            var b = d.setRootRem;
+            d.addEventListener(c, b, false);
+            e.addEventListener("DOMContentLoaded", b, false)
+        })(document, window, 750, false);
+    </script>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+    </div>
+    <script>
+        console.log(window.accurate)
+    </script>
+</body>
+
+</html>

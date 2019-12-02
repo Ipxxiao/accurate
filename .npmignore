@@ -1,0 +1,6 @@
+.git*
+.npmignore
+/.idea
+/.vscode
+test/
+coverage/

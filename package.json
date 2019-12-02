@@ -1,63 +1,127 @@
 {
-  "name": "accurate",
-  "version": "1.0.17",
-  "description": "accuracy calculation for js",
-  "main": "./libs/umd.js",
-  "scripts": {
-    "build": "rollup --config ./build/rollup.config.js",
-    "test": "cd test && node index.js",
-    "server": "NODE_ENV=production  GATEWAY=outer    node ./server/index.js",
-    "clean": "node ./build/scripts/clean",
-    "release": "node ./build/scripts/release"
-  },
-  "files": [
-    "libs/*",
-    "src/*",
-    "types/*"
-  ],
-  "browserslist": [
-    "last 2 versions",
-    "Firefox ESR",
-    "> 1%",
-    "ie >= 9",
-    "iOS >= 9",
-    "Android >= 4"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Ipxxiao/accurate.git"
-  },
-  "keywords": [
-    "accurate",
-    "accuracy",
-    "accuracy calc",
-    "accuracy calculation",
-    "精度计算",
-    "js 精度计算"
-  ],
-  "author": "Jonas Hsiao",
-  "license": "MIT",
-  "private": false,
-  "types": "types/index.d.ts",
-  "homepage": "https://github.com/Ipxxiao/accurate",
-  "devDependencies": {
-    "@babel/core": "^7.1.2",
-    "@babel/plugin-transform-runtime": "^7.1.0",
-    "@babel/preset-env": "^7.1.0",
-    "@babel/preset-typescript": "^7.3.3",
-    "@types/node": "^12.0.12",
-    "done-rainbow": "^0.1.2",
-    "fs-extra": "^8.1.0",
-    "glob": "^7.1.4",
-    "rollup": "^0.66.6",
-    "rollup-plugin-babel": "^4.0.3",
-    "rollup-plugin-commonjs": "^9.2.0",
-    "rollup-plugin-node-resolve": "^3.4.0",
-    "rollup-plugin-terser": "^3.0.0",
-    "rollup-plugin-typescript": "^1.0.1",
-    "rollup-plugin-uglify": "^6.0.0",
-    "tslib": "^1.10.0",
-    "typescript": "^3.5.2"
-  },
-  "dependencies": {}
+    "name": "accurate",
+    "version": "1.2.0",
+    "description": "accuracy calculation for js",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Ipxxiao/accurate.git"
+    },
+    "keywords": [
+        "accurate",
+        "accuracy",
+        "accuracy calc",
+        "accuracy calculation",
+        "精度计算",
+        "js 精度计算"
+    ],
+    "homepage": "https://github.com/Ipxxiao/accurate",
+    "author": "Jonas Hsiao",
+    "license": "MIT",
+    "private": false,
+    "main": "./libs/umd.js",
+    "files": [
+        "libs/*",
+        "types/*"
+    ],
+    "browserslist": [
+        "last 2 versions",
+        "Firefox ESR",
+        "> 1%",
+        "ie >= 9",
+        "iOS >= 9",
+        "Android >= 4.3"
+    ],
+    "typings": "./libs/umd/index.d.ts",
+    "scripts": {
+        "lint": "eslint --ext .ts src/",
+        "lint:fix": "eslint --fix --ext .ts src/",
+        "build:cjs": "rimraf './libs/cjs' && tsc -t 'ES5' -m 'CommonJS' --outDir './libs/cjs' ",
+        "build:es": "rimraf './libs/es' && tsc -t 'ES6' -m 'ESNext' --outDir './libs/es' ",
+        "build:umd": "rimraf './libs/umd' && tsc -t 'ES5' -m 'UMD' --outDir './libs/umd' ",
+        "doc:index": "rimraf './docs/*.md' && jsdoc2md --files ./src/index.ts --no-cache --configure ./jsdoc2md.json > ./docs/README.md",
+        "docs": "npm-run-all -p doc:**",
+        "build": "npm-run-all -p build:**",
+        "server": "NODE_ENV=production  GATEWAY=outer  node ./server/index.js",
+        "clean": "node ./build/scripts/clean",
+        "release": "node ./build/scripts/release $RELEASE_LOG",
+        "report": "codecov -t $CODECOV_TOKEN",
+        "test": "jest --coverage=true"
+    },
+    "zax": {
+        "innerModule": false,
+        "needBuild": true,
+        "test": true,
+        "docs": true,
+        "cleanDirs": [
+            "libs/**"
+        ]
+    },
+    "types": "types/index.d.ts",
+    "devDependencies": {
+        "@babel/cli": "^7.6.4",
+        "@babel/core": "^7.6.4",
+        "@babel/plugin-proposal-class-properties": "^7.5.5",
+        "@babel/plugin-proposal-object-rest-spread": "^7.6.2",
+        "@babel/plugin-transform-runtime": "^7.1.0",
+        "@babel/preset-env": "^7.6.3",
+        "@babel/preset-typescript": "^7.6.0",
+        "@types/jest": "^24.0.18",
+        "@types/jsdom": "^12.2.4",
+        "@types/node": "^12.7.12",
+        "chalk": "^2.4.2",
+        "codecov": "^3.6.1",
+        "done-rainbow": "^0.1.2",
+        "fs-extra": "^8.1.0",
+        "glob": "^7.1.4",
+        "jest": "^24.9.0",
+        "jsdoc-babel": "^0.5.0",
+        "jsdoc-to-markdown": "^5.0.2",
+        "npm-run-all": "^4.1.5",
+        "rimraf": "^3.0.0",
+        "rollup": "^0.66.6",
+        "rollup-plugin-babel": "^4.0.3",
+        "rollup-plugin-commonjs": "^9.2.0",
+        "rollup-plugin-node-resolve": "^3.4.0",
+        "rollup-plugin-terser": "^3.0.0",
+        "rollup-plugin-typescript": "^1.0.1",
+        "rollup-plugin-uglify": "^6.0.0",
+        "ts-jest": "^24.1.0",
+        "tslib": "^1.10.0",
+        "typescript": "^3.6.4"
+    },
+    "jest": {
+        "setupFiles": [
+            "<rootDir>/__mocks__/index.ts"
+        ],
+        "transform": {
+            ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+        },
+        "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+        "moduleFileExtensions": [
+            "ts",
+            "tsx",
+            "js"
+        ],
+        "coveragePathIgnorePatterns": [
+            "/node_modules/",
+            "/coverage/",
+            "/build/",
+            "/types/",
+            "/test/",
+            "/libs/"
+        ],
+        "coverageThreshold": {
+            "global": {
+                "statements": 95,
+                "branches": 75,
+                "functions": 95,
+                "lines": 95
+            }
+        },
+        "collectCoverage": true
+    },
+    "dependencies": {
+        "jsdom": "^15.2.0",
+        "striptags": "^3.1.1"
+    }
 }

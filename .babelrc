@@ -1,14 +1,24 @@
 {
-    "presets": [
-        ["@babel/env", {
-			"modules": false,
-			"corejs": "3.0.0",
-            "useBuiltIns": "usage"
-        }],
-        "@babel/typescript"
-    ],
-    "plugins": [
-        "@babel/transform-runtime"
-    ]
-
+	"presets": [
+		[
+			"@babel/env",
+			{
+				"modules": false,
+				"corejs": {
+					"version": 3,
+					"proposals": true
+				},
+				"useBuiltIns": "usage"
+			}
+		],
+		"@babel/typescript"
+	],
+	"plugins": [
+		"@babel/transform-runtime",
+		"@babel/proposal-object-rest-spread",
+		["@babel/proposal-decorators", { "legacy": true }],
+		["@babel/proposal-class-properties", { "loose": true }],
+		["import", { "libraryName": "antd-mobile", "style": "css" }]
+	],
+	"ignore": ["*.min.js"]
 }

@@ -1,29 +1,8 @@
 /**
- * 参数是否数值类型
- *
- * @param {number[]} params
- * @returns {boolean}
+ * accurate module.
+ * @module accurate
+ * @see doc https://github.com/Ipxxiao/accurate/tree/master/docs
  */
-const isNum = (params: number[]): boolean => {
-	let flag = true;
-
-	for (let i in params) {
-		let item = Number(params[i]);
-
-		try {
-			if (isNaN(item) || typeof item != 'number') {
-				let idx = Number(i);
-
-				flag = false;
-				throw new TypeError(`The ${++idx}th parameter type is not a number`);
-			}
-		} catch (e) {
-			console.error(e);
-		}
-	}
-
-	return flag;
-}
 
 /**
  * 获取小数位数
@@ -42,15 +21,17 @@ const getDecimalDigits = (num: number): number => {
 /**
  * 精度加法计算
  *
+ * @example
+ * ```js
+ * add(1.1, 0.3)
+ * //=> 1.4
+ * ```
+ *
  * @param {number} num1
  * @param {number} num2
  * @returns {number}
  */
 const add = (num1: number, num2: number): number => {
-	if (!isNum([num1, num2])) {
-		return NaN;
-	}
-
 	num1 = Number(num1);
 	num2 = Number(num2);
 
@@ -71,15 +52,17 @@ const add = (num1: number, num2: number): number => {
 /**
  * 精度减法计算
  *
+ * @example
+ * ```js
+ * subtract(1.1, 0.2)
+ * //=> 0.9
+ * ```
+ *
  * @param {number} num1
  * @param {number} num2
  * @returns {number}
  */
 const subtract = (num1: number, num2: number): number => {
-	if (!isNum([num1, num2])) {
-		return NaN;
-	}
-
 	num1 = Number(num1);
 	num2 = Number(num2);
 
@@ -89,15 +72,17 @@ const subtract = (num1: number, num2: number): number => {
 /**
  * 精度乘法计算
  *
+ * @example
+ * ```js
+ * mul(1.1, 0.1)
+ * //=> 0.11
+ * ```
+ *
  * @param {number} num1
  * @param {number} num2
  * @returns {number}
  */
 const mul = (num1: number, num2: number): number => {
-	if (!isNum([num1, num2])) {
-		return NaN;
-	}
-
 	num1 = Number(num1);
 	num2 = Number(num2);
 
@@ -120,15 +105,17 @@ const mul = (num1: number, num2: number): number => {
 /**
  * 精度除法计算
  *
+ * @example
+ * ```js
+ * division(1.1, 10)
+ * //=> 0.11
+ * ```
+ *
  * @param {number} num1
  * @param {number} num2
  * @returns {number}
  */
 const division = (num1: number, num2: number): number => {
-	if (!isNum([num1, num2])) {
-		return NaN;
-	}
-
 	num1 = Number(num1);
 	num2 = Number(num2);
 
@@ -151,15 +138,17 @@ const division = (num1: number, num2: number): number => {
 /**
  * 精度取模计算
  *
+ * @example
+ * ```js
+ * modulo(1.1, 1)
+ * //=> 0.1
+ * ```
+ *
  * @param {number} num1
  * @param {number} num2
  * @returns {number}
  */
 const modulo = (num1: number, num2: number): number => {
-	if (!isNum([num1, num2])) {
-		return NaN;
-	}
-
 	num1 = Number(num1);
 	num2 = Number(num2);
 
@@ -179,10 +168,20 @@ const modulo = (num1: number, num2: number): number => {
 	return temp / m;
 }
 
-export default {
+const accurate = {
 	add,
 	subtract,
 	mul,
 	division,
 	modulo,
 };
+
+export {
+	add,
+	subtract,
+	mul,
+	division,
+	modulo,
+};
+
+export default accurate;

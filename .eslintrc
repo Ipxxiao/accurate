@@ -1,0 +1,66 @@
+{
+	"globals": {
+		"html2canvas": true,
+		"VConsole": true,
+		"wx": true,
+		"dunkey": true,
+		"pointman": true,
+		"bridge": true,
+		"Clipboard": true,
+		"_": true,
+		"_ua": true,
+		"_zax": true,
+		"_util": true,
+		"_hmt": true,
+		"router": true,
+		"location": true,
+		"prompt": true,
+		"alert": true,
+		"$": true,
+		"WeixinJSBridge": true
+	},
+	"env": {
+		"browser": true, //启用浏览器全局变量。
+		"node": true, //Node.js全局变量和Node.js范围。
+		"commonjs": true, //CommonJS全局变量和CommonJS范围。
+		"shared-node-browser": true, //Node和Browser共同的全局。
+		"es6": true, // 启用ES6的功能。
+		"amd": true, //根据amd规范定义require()和define()作为全局变量。
+		"jquery": true //jQuery全局变量。
+	},
+	"root": true,
+	"extends": ["za", "za/typescript"],
+	"settings": {},
+	"rules": {
+		"indent": 0,
+
+		// 评估为警告的
+		"no-restricted-globals": 1, // 不允许使用的，被申明不能用的全局变量
+		"prefer-template": 1, // 涉及到变量拼接的字符串都用 `` 来表达
+		"no-useless-constructor": 1, // 自动生成构造器，构造器没内容就不要申明
+		"camelcase": 1, // 一定要驼峰命名
+		"import/no-mutable-exports": 1, // 应该导出常量
+		"func-names": 1, // 不要用匿名函数 Foo.prototype.bar = () => {} / (function(){})()
+		"no-empty-function": 1, // 方法内容为空
+
+		// 评估为取消的
+		"prefer-rest-params": 0, // 不要使用 arguments 对象
+		"no-restricted-syntax": 0, // 不能使用 for..in for..of with 等制定的表达式，可定制禁用列表
+		"import/no-dynamic-require": 0, // require 应该要确定地址: require(generatePath()) 无法通过
+		"no-unused-vars": 0, // 无用变量，因为可能项目中这些变量是要留着以后用的
+		"comma-dangle": 0, // 对象、数组成员用逗号结尾
+		"prefer-const": 0, // 常量 cnost ，变量 let
+		"no-tabs": 0, // 不允许用 tab
+		"no-script-url": 0, // javascript:; 会被认为是无效 url
+		"no-console": 0,
+		"semi": 0,
+		"babel/semi": 0,
+		"@typescript-eslint/no-unused-vars": 0,
+		"@typescript-eslint/semi": 0,
+		"@typescript-eslint/member-delimiter-style": 0,
+		"@typescript-eslint/prefer-interface": 0,
+		"@typescript-eslint/no-angle-bracket-type-assertion": 0,
+		"@typescript-eslint/no-triple-slash-reference": 0,
+		"@typescript-eslint/no-object-literal-type-assertion": 0
+	}
+}
