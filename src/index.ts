@@ -35,10 +35,10 @@ const add = (num1: number, num2: number): number => {
 	num1 = Number(num1);
 	num2 = Number(num2);
 
-	let temp = 0,
-		l1 = 0,
-		l2 = 0,
-		m = 0;
+	let temp: number = 0,
+		l1: number = 0,
+		l2: number = 0,
+		m: number = 0;
 
 	l1 = getDecimalDigits(num1);
 	l2 = getDecimalDigits(num2);
@@ -86,12 +86,12 @@ const mul = (num1: number, num2: number): number => {
 	num1 = Number(num1);
 	num2 = Number(num2);
 
-	let temp = 0,
-		l1 = 0,
-		l2 = 0,
-		m = 0,
-		s1 = num1.toString(),
-		s2 = num2.toString();
+	let temp: number = 0,
+		l1: number = 0,
+		l2: number = 0,
+		m: number = 0,
+		s1: string = num1.toString(),
+		s2: string = num2.toString();
 
 	l1 = getDecimalDigits(num1);
 	l2 = getDecimalDigits(num2);
@@ -119,12 +119,12 @@ const division = (num1: number, num2: number): number => {
 	num1 = Number(num1);
 	num2 = Number(num2);
 
-	let temp = 0,
-		l1 = 0,
-		l2 = 0,
-		m = 0,
-		s1 = num1.toString(),
-		s2 = num2.toString();
+	let temp: number = 0,
+		l1: number = 0,
+		l2: number = 0,
+		m: number = 0,
+		s1: string = num1.toString(),
+		s2: string = num2.toString();
 
 	l1 = getDecimalDigits(num1);
 	l2 = getDecimalDigits(num2);
@@ -152,10 +152,10 @@ const modulo = (num1: number, num2: number): number => {
 	num1 = Number(num1);
 	num2 = Number(num2);
 
-	let temp = 0,
-		l1 = 0,
-		l2 = 0,
-		m = 0;
+	let temp: number = 0,
+		l1: number = 0,
+		l2: number = 0,
+		m: number = 0;
 
 	l1 = getDecimalDigits(num1);
 	l2 = getDecimalDigits(num2);

@@ -11,6 +11,7 @@
         "accuracy",
         "accuracy calc",
         "accuracy calculation",
+        "calc",
         "精度计算",
         "js 精度计算"
     ],
@@ -18,7 +19,7 @@
     "author": "Jonas Hsiao",
     "license": "MIT",
     "private": false,
-    "main": "./libs/umd.js",
+    "main": "./libs/cjs",
     "files": [
         "libs/*",
         "types/*"
