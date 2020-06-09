@@ -76,7 +76,7 @@
      *
      * @example
      * ```js
-     * mul(1.1, 0.1)
+     * multiply(1.1, 0.1)
      * //=> 0.11
      * ```
      *
@@ -84,7 +84,7 @@
      * @param {number} num2
      * @returns {number}
      */
-    var mul = function (num1, num2) {
+    var multiply = function (num1, num2) {
         num1 = Number(num1);
         num2 = Number(num2);
         var temp = 0, l1 = 0, l2 = 0, m = 0, s1 = num1.toString(), s2 = num2.toString();
@@ -94,6 +94,8 @@
         temp = Number.parseInt(s1.replace('.', '')) * Number.parseInt(s2.replace('.', ''));
         return temp / m;
     };
+    exports.multiply = multiply;
+    var mul = multiply;
     exports.mul = mul;
     /**
      * 精度除法计算
@@ -149,6 +151,7 @@
         add: add,
         subtract: subtract,
         mul: mul,
+        multiply: multiply,
         division: division,
         modulo: modulo,
     };

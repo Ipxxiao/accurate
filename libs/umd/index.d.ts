@@ -36,7 +36,7 @@ declare const subtract: (num1: number, num2: number) => number;
  *
  * @example
  * ```js
- * mul(1.1, 0.1)
+ * multiply(1.1, 0.1)
  * //=> 0.11
  * ```
  *
@@ -44,6 +44,7 @@ declare const subtract: (num1: number, num2: number) => number;
  * @param {number} num2
  * @returns {number}
  */
+declare const multiply: (num1: number, num2: number) => number;
 declare const mul: (num1: number, num2: number) => number;
 /**
  * 精度除法计算
@@ -77,8 +78,9 @@ declare const accurate: {
     add: (num1: number, num2: number) => number;
     subtract: (num1: number, num2: number) => number;
     mul: (num1: number, num2: number) => number;
+    multiply: (num1: number, num2: number) => number;
     division: (num1: number, num2: number) => number;
     modulo: (num1: number, num2: number) => number;
 };
-export { add, subtract, mul, division, modulo, };
+export { add, subtract, mul, multiply, division, modulo, };
 export default accurate;

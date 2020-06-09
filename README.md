@@ -28,7 +28,7 @@ npm run build
 ## use
 
 ``` javascript 
-import accurate, { add, subtract, mul, division, modulo } from 'accurate'
+import accurate, { add, subtract, mul, multiply, division, modulo } from 'accurate'
 ```
 
 
@@ -58,16 +58,18 @@ accurate.subtract(1.1, 0.2)
 0.9
 ```
 
-. **mul**
+. **multiply**
 ``` javascript
 >
 1.1 * 0.1
 accurate.mul(1.1, 0.1)
+accurate.multiply(1.1, 0.1)
 ```
 
 ``` javascript
 <-
 0.11000000000000001
+0.11
 0.11
 ```
 

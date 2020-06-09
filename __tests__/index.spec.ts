@@ -1,8 +1,8 @@
-import accurate, { add, subtract, mul, division, modulo } from '../src/index'
+import accurate, { add, subtract, mul, multiply, division, modulo } from '../src/index'
 
 import { log } from '../src/_utils/index'
 
-const methods = ['add', 'subtract', 'mul', 'division', 'modulo']
+const methods = ['add', 'subtract', 'mul', 'multiply', 'division', 'modulo']
 
 describe('accurate', () => {
 	methods.forEach(par => {
@@ -22,6 +22,10 @@ describe('accurate', () => {
 
 	it(`mul`, () => {
 		expect(mul(1.1, 0.1)).toEqual(0.11)
+	})
+
+	it(`multiply`, () => {
+		expect(multiply(1.1, 0.1)).toEqual(0.11)
 	})
 
 	it(`division`, () => {

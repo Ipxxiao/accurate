@@ -46,7 +46,7 @@ subtract(1.1, 0.2)
 
 **Example**  
 ```js
-mul(1.1, 0.1)
+multiply(1.1, 0.1)
 //=> 0.11
 ```
 <a name="module_accurate.mul"></a>
