@@ -1,6 +1,6 @@
 {
     "name": "accurate",
-    "version": "1.2.5",
+    "version": "1.3.0",
     "description": "accuracy calculation for js",
     "repository": {
         "type": "git",
@@ -11,9 +11,11 @@
         "accuracy",
         "accuracy calc",
         "accuracy calculation",
-        "calc",
+        "expr",
+        "expression calc",
         "精度计算",
-        "js 精度计算"
+        "js 精度计算",
+        "表达式精度计算"
     ],
     "homepage": "https://github.com/Ipxxiao/accurate",
     "author": "Jonas Hsiao",

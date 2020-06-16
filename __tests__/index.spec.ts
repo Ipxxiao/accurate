@@ -1,4 +1,4 @@
-import accurate, { add, subtract, mul, multiply, division, modulo } from '../src/index'
+import accurate, { calcAdd, calcSubtract, calcMul, calcMultiply, calcDivision, calcModulo, calcExpr } from '../src/index'
 
 import { log } from '../src/_utils/index'
 
@@ -13,27 +13,34 @@ describe('accurate', () => {
 	})
 
 	it(`add`, () => {
-		expect(add(1.1, 0.3)).toEqual(1.4)
+		expect(accurate.add(1.1, 0.3)).toEqual(1.4)
 	})
 
 	it(`subtract`, () => {
-		expect(subtract(1.1, 0.2)).toEqual(0.9)
+		expect(accurate.subtract(1.1, 0.2)).toEqual(0.9)
 	})
 
 	it(`mul`, () => {
-		expect(mul(1.1, 0.1)).toEqual(0.11)
+		expect(accurate.mul(1.1, 0.1)).toEqual(0.11)
 	})
 
 	it(`multiply`, () => {
-		expect(multiply(1.1, 0.1)).toEqual(0.11)
+		expect(accurate.multiply(1.1, 0.1)).toEqual(0.11)
 	})
 
 	it(`division`, () => {
-		expect(division(1.1, 10)).toEqual(0.11)
+		expect(accurate.division(1.1, 10)).toEqual(0.11)
 	})
 
 	it(`modulo`, () => {
-		expect(modulo(1.1, 1)).toEqual(0.1)
+		expect(accurate.modulo(1.1, 1)).toEqual(0.1)
+	})
+
+	it(`expr`, () => {
+		expect(accurate.expr('1+3*4')).toEqual(13)
+		expect(accurate.expr('(1+3*4)*4')).toEqual(52)
+		expect(accurate.expr('((1.1+0.3)*4+2*3)/(1.1%0.3-1*0.1)-1*5')).toEqual(111)
+		expect(accurate.expr('1.1a + 0.3')).toEqual(NaN)
 	})
 })
 

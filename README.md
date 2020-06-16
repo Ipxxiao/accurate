@@ -28,7 +28,7 @@ npm run build
 ## use
 
 ``` javascript 
-import accurate, { add, subtract, mul, multiply, division, modulo } from 'accurate'
+import accurate, { calcAdd, calcSubtract, calcMul, calcMultiply, calcDivision, calcModulo, calcExpr } from 'accurate'
 ```
 
 
@@ -97,6 +97,19 @@ accurate.modulo(1.1, 1)
 <-
 0.10000000000000009
 0.1
+```
+
+. **expr**
+``` javascript
+>
+((1.1+0.3)*4+2*3)/(1.1%0.3-1*0.1)-1*5
+accurate.expr('((1.1+0.3)*4+2*3)/(1.1%0.3-1*0.1)-1*5')
+```
+
+``` javascript
+<-
+110.99999999999987
+111
 ```
 
 ## More

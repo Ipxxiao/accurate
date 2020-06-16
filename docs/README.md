@@ -7,17 +7,20 @@
 
 * [accurate](#module_accurate)
     * _static_
-        * [.add](#module_accurate.add) ⇒ <code>number</code>
-        * [.subtract](#module_accurate.subtract) ⇒ <code>number</code>
-        * [.mul](#module_accurate.mul) ⇒ <code>number</code>
-        * [.division](#module_accurate.division) ⇒ <code>number</code>
+        * [.calcAdd](#module_accurate.calcAdd) ⇒ <code>number</code>
+        * [.calcSubtract](#module_accurate.calcSubtract) ⇒ <code>number</code>
+        * [.calcMul](#module_accurate.calcMul) ⇒ <code>number</code>
+        * [.calcDivision](#module_accurate.calcDivision) ⇒ <code>number</code>
+        * [.calcModulo](#module_accurate.calcModulo) ⇒ <code>number</code>
     * _inner_
         * [~getDecimalDigits(num)](#module_accurate..getDecimalDigits) ⇒ <code>number</code>
-        * [~add(num1, num2)](#module_accurate..add) ⇒ <code>number</code>
+        * [~getExprArray(expr)](#module_accurate..getExprArray) ⇒ <code>Array.&lt;string&gt;</code>
+        * [~exprArrayCalc(exprArray)](#module_accurate..exprArrayCalc) ⇒ <code>number</code>
+        * [~calcAdd(num1, num2)](#module_accurate..calcAdd) ⇒ <code>number</code>
 
-<a name="module_accurate.add"></a>
+<a name="module_accurate.calcAdd"></a>
 
-### accurate.add ⇒ <code>number</code>
+### accurate.calcAdd ⇒ <code>number</code>
 <p>精度减法计算</p>
 
 **Kind**: static property of [<code>accurate</code>](#module_accurate)  
@@ -29,12 +32,12 @@
 
 **Example**  
 ```js
-subtract(1.1, 0.2)
+calcSubtract(1.1, 0.2)
 //=> 0.9
 ```
-<a name="module_accurate.subtract"></a>
+<a name="module_accurate.calcSubtract"></a>
 
-### accurate.subtract ⇒ <code>number</code>
+### accurate.calcSubtract ⇒ <code>number</code>
 <p>精度乘法计算</p>
 
 **Kind**: static property of [<code>accurate</code>](#module_accurate)  
@@ -46,12 +49,12 @@ subtract(1.1, 0.2)
 
 **Example**  
 ```js
-multiply(1.1, 0.1)
+calcMultiply(1.1, 0.1)
 //=> 0.11
 ```
-<a name="module_accurate.mul"></a>
+<a name="module_accurate.calcMul"></a>
 
-### accurate.mul ⇒ <code>number</code>
+### accurate.calcMul ⇒ <code>number</code>
 <p>精度除法计算</p>
 
 **Kind**: static property of [<code>accurate</code>](#module_accurate)  
@@ -63,12 +66,12 @@ multiply(1.1, 0.1)
 
 **Example**  
 ```js
-division(1.1, 10)
+calcDivision(1.1, 10)
 //=> 0.11
 ```
-<a name="module_accurate.division"></a>
+<a name="module_accurate.calcDivision"></a>
 
-### accurate.division ⇒ <code>number</code>
+### accurate.calcDivision ⇒ <code>number</code>
 <p>精度取模计算</p>
 
 **Kind**: static property of [<code>accurate</code>](#module_accurate)  
@@ -80,8 +83,24 @@ division(1.1, 10)
 
 **Example**  
 ```js
-modulo(1.1, 1)
+calcModulo(1.1, 1)
 //=> 0.1
+```
+<a name="module_accurate.calcModulo"></a>
+
+### accurate.calcModulo ⇒ <code>number</code>
+<p>算术表达式计算</p>
+
+**Kind**: static property of [<code>accurate</code>](#module_accurate)  
+
+| Param | Type |
+| --- | --- |
+| expr | <code>string</code> | 
+
+**Example**  
+```js
+calcExpr('((1.1+0.3)*4+2*3)/(3-1*0.1)-1*5')
+//=> -1
 ```
 <a name="module_accurate..getDecimalDigits"></a>
 
@@ -94,9 +113,31 @@ modulo(1.1, 1)
 | --- | --- |
 | num | <code>number</code> | 
 
-<a name="module_accurate..add"></a>
+<a name="module_accurate..getExprArray"></a>
 
-### accurate~add(num1, num2) ⇒ <code>number</code>
+### accurate~getExprArray(expr) ⇒ <code>Array.&lt;string&gt;</code>
+<p>获取表达式数组</p>
+
+**Kind**: inner method of [<code>accurate</code>](#module_accurate)  
+
+| Param | Type |
+| --- | --- |
+| expr | <code>string</code> | 
+
+<a name="module_accurate..exprArrayCalc"></a>
+
+### accurate~exprArrayCalc(exprArray) ⇒ <code>number</code>
+<p>表达式数组计算</p>
+
+**Kind**: inner method of [<code>accurate</code>](#module_accurate)  
+
+| Param | Type |
+| --- | --- |
+| exprArray | <code>Array.&lt;string&gt;</code> | 
+
+<a name="module_accurate..calcAdd"></a>
+
+### accurate~calcAdd(num1, num2) ⇒ <code>number</code>
 <p>精度加法计算</p>
 
 **Kind**: inner method of [<code>accurate</code>](#module_accurate)  
@@ -108,6 +149,6 @@ modulo(1.1, 1)
 
 **Example**  
 ```js
-add(1.1, 0.3)
+calcAdd(1.1, 0.3)
 //=> 1.4
 ```
