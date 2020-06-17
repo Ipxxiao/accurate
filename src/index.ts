@@ -4,6 +4,13 @@
  * @see doc https://github.com/Ipxxiao/accurate/tree/master/docs
  */
 
+import { add, subtract, multiply, division, modulo } from './calc'
+
+interface CalcFunc {
+    <T>(arg: T): number
+    <T>(...args: T[] | number[]): number
+}
+
 // 分隔符
 const DELIMITERS = {
     '(': true,
@@ -13,20 +20,6 @@ const DELIMITERS = {
     '*': true,
     '/': true,
     '%': true,
-}
-
-/**
- * 获取小数位数
- *
- * @param {number} num
- * @returns {number}
- */
-const getDecimalDigits = (num: number): number => {
-    try {
-        return num.toString().split('.')[1].length;
-    } catch (e) {
-        return 0;
-    }
 }
 
 /**
@@ -211,30 +204,35 @@ const exprArrayCalc = (exprArray: string[]): number => {
  *
  * @example
  * ```js
- * calcAdd(1.1, 0.3)
- * //=> 1.4
+ * calcAdd(1.1, 0.3, 0.1)
+ * //=> 1.5
  * ```
  *
- * @param {number} num1
- * @param {number} num2
+ * @param {...number[]} args
  * @returns {number}
  */
-const calcAdd = (num1: number, num2: number): number => {
-    num1 = Number(num1);
-    num2 = Number(num2);
-
-    let temp: number = 0,
-        l1: number = 0,
-        l2: number = 0,
-        m: number = 0;
-
-    l1 = getDecimalDigits(num1);
-    l2 = getDecimalDigits(num2);
-
-    m = 10 ** Math.max(l1, l2);
-    temp = calcMul(num1, m) + calcMul(num2, m);
-
-    return temp / m;
+const calcAdd: CalcFunc = (...args: number[]): number => {
+    if (args.length) {
+        if (args.length === 1) {
+            if (Array.isArray(args[0])) {
+                return calcAdd(...args[0])
+            } else {
+                return args[0]
+            }
+        } else {
+            return args.reduce((accum, item) => {
+                if (Array.isArray(accum)) {
+                    return calcAdd(...accum, item)
+                } else if (Array.isArray(item)) {
+                    return calcAdd(accum, ...item)
+                } else {
+                    return add(accum, item)
+                }
+            })
+        }
+    } else {
+        return NaN
+    }
 }
 
 /**
@@ -242,19 +240,35 @@ const calcAdd = (num1: number, num2: number): number => {
  *
  * @example
  * ```js
- * calcSubtract(1.1, 0.2)
- * //=> 0.9
+ * calcSubtract(1.1, 0.2, 0.1)
+ * //=> 0.8
  * ```
  *
- * @param {number} num1
- * @param {number} num2
+ * @param {...number[]} args
  * @returns {number}
  */
-const calcSubtract = (num1: number, num2: number): number => {
-    num1 = Number(num1);
-    num2 = Number(num2);
-
-    return calcAdd(num1, -num2);
+const calcSubtract: CalcFunc = (...args: number[]): number => {
+    if (args.length) {
+        if (args.length === 1) {
+            if (Array.isArray(args[0])) {
+                return calcSubtract(...args[0])
+            } else {
+                return args[0]
+            }
+        } else {
+            return args.reduce((accum, item) => {
+                if (Array.isArray(accum)) {
+                    return calcSubtract(...accum, item)
+                } else if (Array.isArray(item)) {
+                    return calcSubtract(accum, ...item)
+                } else {
+                    return subtract(accum, item)
+                }
+            })
+        }
+    } else {
+        return NaN
+    }
 }
 
 /**
@@ -262,32 +276,35 @@ const calcSubtract = (num1: number, num2: number): number => {
  *
  * @example
  * ```js
- * calcMultiply(1.1, 0.1)
- * //=> 0.11
+ * calcMultiply(1.1, 0.1, 0.2)
+ * //=> 0.022
  * ```
  *
- * @param {number} num1
- * @param {number} num2
+ * @param {...number[]} args
  * @returns {number}
  */
-const calcMultiply = (num1: number, num2: number): number => {
-    num1 = Number(num1);
-    num2 = Number(num2);
-
-    let temp: number = 0,
-        l1: number = 0,
-        l2: number = 0,
-        m: number = 0,
-        s1: string = num1.toString(),
-        s2: string = num2.toString();
-
-    l1 = getDecimalDigits(num1);
-    l2 = getDecimalDigits(num2);
-
-    m = 10 ** (l1 + l2);
-    temp = Number.parseInt(s1.replace('.', '')) * Number.parseInt(s2.replace('.', ''));
-
-    return temp / m;
+const calcMultiply: CalcFunc = (...args: number[]): number => {
+    if (args.length) {
+        if (args.length === 1) {
+            if (Array.isArray(args[0])) {
+                return calcMultiply(...args[0])
+            } else {
+                return args[0]
+            }
+        } else {
+            return args.reduce((accum, item) => {
+                if (Array.isArray(accum)) {
+                    return calcMultiply(...accum, item)
+                } else if (Array.isArray(item)) {
+                    return calcMultiply(accum, ...item)
+                } else {
+                    return multiply(accum, item)
+                }
+            })
+        }
+    } else {
+        return NaN
+    }
 }
 const calcMul = calcMultiply
 
@@ -296,32 +313,35 @@ const calcMul = calcMultiply
  *
  * @example
  * ```js
- * calcDivision(1.1, 10)
- * //=> 0.11
+ * calcDivision(1.1, 10, 2)
+ * //=> 0.055
  * ```
  *
- * @param {number} num1
- * @param {number} num2
+ * @param {...number[]} args
  * @returns {number}
  */
-const calcDivision = (num1: number, num2: number): number => {
-    num1 = Number(num1);
-    num2 = Number(num2);
-
-    let temp: number = 0,
-        l1: number = 0,
-        l2: number = 0,
-        m: number = 0,
-        s1: string = num1.toString(),
-        s2: string = num2.toString();
-
-    l1 = getDecimalDigits(num1);
-    l2 = getDecimalDigits(num2);
-
-    m = 10 ** (l2 - l1);
-    temp = Number.parseInt(s1.replace('.', '')) / Number.parseInt(s2.replace('.', ''));
-
-    return calcMul(temp, m);
+const calcDivision: CalcFunc = (...args: number[]): number => {
+    if (args.length) {
+        if (args.length === 1) {
+            if (Array.isArray(args[0])) {
+                return calcDivision(...args[0])
+            } else {
+                return args[0]
+            }
+        } else {
+            return args.reduce((accum, item) => {
+                if (Array.isArray(accum)) {
+                    return calcDivision(...accum, item)
+                } else if (Array.isArray(item)) {
+                    return calcDivision(accum, ...item)
+                } else {
+                    return division(accum, item)
+                }
+            })
+        }
+    } else {
+        return NaN
+    }
 }
 
 /**
@@ -333,28 +353,31 @@ const calcDivision = (num1: number, num2: number): number => {
  * //=> 0.1
  * ```
  *
- * @param {number} num1
- * @param {number} num2
+ * @param {...number[]} args
  * @returns {number}
  */
-const calcModulo = (num1: number, num2: number): number => {
-    num1 = Number(num1);
-    num2 = Number(num2);
-
-    let temp: number = 0,
-        l1: number = 0,
-        l2: number = 0,
-        m: number = 0;
-
-    l1 = getDecimalDigits(num1);
-    l2 = getDecimalDigits(num2);
-
-    m = 10 ** Math.max(l1, l2);
-    num1 = calcMul(num1, m);
-    num2 = calcMul(num2, m);
-    temp = num1 % num2;
-
-    return temp / m;
+const calcModulo: CalcFunc = (...args: number[]): number => {
+    if (args.length) {
+        if (args.length === 1) {
+            if (Array.isArray(args[0])) {
+                return calcModulo(...args[0])
+            } else {
+                return args[0]
+            }
+        } else {
+            return args.reduce((accum, item) => {
+                if (Array.isArray(accum)) {
+                    return calcModulo(...accum, item)
+                } else if (Array.isArray(item)) {
+                    return calcModulo(accum, ...item)
+                } else {
+                    return modulo(accum, item)
+                }
+            })
+        }
+    } else {
+        return NaN
+    }
 }
 
 /**

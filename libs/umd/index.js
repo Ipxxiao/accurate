@@ -3,17 +3,38 @@
  * @module accurate
  * @see doc https://github.com/Ipxxiao/accurate/tree/master/docs
  */
+var __read = (this && this.__read) || function (o, n) {
+    var m = typeof Symbol === "function" && o[Symbol.iterator];
+    if (!m) return o;
+    var i = m.call(o), r, ar = [], e;
+    try {
+        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
+    }
+    catch (error) { e = { error: error }; }
+    finally {
+        try {
+            if (r && !r.done && (m = i["return"])) m.call(i);
+        }
+        finally { if (e) throw e.error; }
+    }
+    return ar;
+};
+var __spread = (this && this.__spread) || function () {
+    for (var ar = [], i = 0; i < arguments.length; i++) ar = ar.concat(__read(arguments[i]));
+    return ar;
+};
 (function (factory) {
     if (typeof module === "object" && typeof module.exports === "object") {
         var v = factory(require, exports);
         if (v !== undefined) module.exports = v;
     }
     else if (typeof define === "function" && define.amd) {
-        define(["require", "exports"], factory);
+        define(["require", "exports", "./calc"], factory);
     }
 })(function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
+    var calc_1 = require("./calc");
     // 分隔符
     var DELIMITERS = {
         '(': true,
@@ -23,20 +44,6 @@
         '*': true,
         '/': true,
         '%': true,
-    };
-    /**
-     * 获取小数位数
-     *
-     * @param {number} num
-     * @returns {number}
-     */
-    var getDecimalDigits = function (num) {
-        try {
-            return num.toString().split('.')[1].length;
-        }
-        catch (e) {
-            return 0;
-        }
     };
     /**
      * 获取表达式数组
@@ -208,23 +215,44 @@
      *
      * @example
      * ```js
-     * calcAdd(1.1, 0.3)
-     * //=> 1.4
+     * calcAdd(1.1, 0.3, 0.1)
+     * //=> 1.5
      * ```
      *
-     * @param {number} num1
-     * @param {number} num2
+     * @param {...number[]} args
      * @returns {number}
      */
-    var calcAdd = function (num1, num2) {
-        num1 = Number(num1);
-        num2 = Number(num2);
-        var temp = 0, l1 = 0, l2 = 0, m = 0;
-        l1 = getDecimalDigits(num1);
-        l2 = getDecimalDigits(num2);
-        m = Math.pow(10, Math.max(l1, l2));
-        temp = calcMul(num1, m) + calcMul(num2, m);
-        return temp / m;
+    var calcAdd = function () {
+        var args = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            args[_i] = arguments[_i];
+        }
+        if (args.length) {
+            if (args.length === 1) {
+                if (Array.isArray(args[0])) {
+                    return calcAdd.apply(void 0, __spread(args[0]));
+                }
+                else {
+                    return args[0];
+                }
+            }
+            else {
+                return args.reduce(function (accum, item) {
+                    if (Array.isArray(accum)) {
+                        return calcAdd.apply(void 0, __spread(accum, [item]));
+                    }
+                    else if (Array.isArray(item)) {
+                        return calcAdd.apply(void 0, __spread([accum], item));
+                    }
+                    else {
+                        return calc_1.add(accum, item);
+                    }
+                });
+            }
+        }
+        else {
+            return NaN;
+        }
     };
     exports.calcAdd = calcAdd;
     /**
@@ -232,18 +260,44 @@
      *
      * @example
      * ```js
-     * calcSubtract(1.1, 0.2)
-     * //=> 0.9
+     * calcSubtract(1.1, 0.2, 0.1)
+     * //=> 0.8
      * ```
      *
-     * @param {number} num1
-     * @param {number} num2
+     * @param {...number[]} args
      * @returns {number}
      */
-    var calcSubtract = function (num1, num2) {
-        num1 = Number(num1);
-        num2 = Number(num2);
-        return calcAdd(num1, -num2);
+    var calcSubtract = function () {
+        var args = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            args[_i] = arguments[_i];
+        }
+        if (args.length) {
+            if (args.length === 1) {
+                if (Array.isArray(args[0])) {
+                    return calcSubtract.apply(void 0, __spread(args[0]));
+                }
+                else {
+                    return args[0];
+                }
+            }
+            else {
+                return args.reduce(function (accum, item) {
+                    if (Array.isArray(accum)) {
+                        return calcSubtract.apply(void 0, __spread(accum, [item]));
+                    }
+                    else if (Array.isArray(item)) {
+                        return calcSubtract.apply(void 0, __spread([accum], item));
+                    }
+                    else {
+                        return calc_1.subtract(accum, item);
+                    }
+                });
+            }
+        }
+        else {
+            return NaN;
+        }
     };
     exports.calcSubtract = calcSubtract;
     /**
@@ -251,23 +305,44 @@
      *
      * @example
      * ```js
-     * calcMultiply(1.1, 0.1)
-     * //=> 0.11
+     * calcMultiply(1.1, 0.1, 0.2)
+     * //=> 0.022
      * ```
      *
-     * @param {number} num1
-     * @param {number} num2
+     * @param {...number[]} args
      * @returns {number}
      */
-    var calcMultiply = function (num1, num2) {
-        num1 = Number(num1);
-        num2 = Number(num2);
-        var temp = 0, l1 = 0, l2 = 0, m = 0, s1 = num1.toString(), s2 = num2.toString();
-        l1 = getDecimalDigits(num1);
-        l2 = getDecimalDigits(num2);
-        m = Math.pow(10, (l1 + l2));
-        temp = Number.parseInt(s1.replace('.', '')) * Number.parseInt(s2.replace('.', ''));
-        return temp / m;
+    var calcMultiply = function () {
+        var args = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            args[_i] = arguments[_i];
+        }
+        if (args.length) {
+            if (args.length === 1) {
+                if (Array.isArray(args[0])) {
+                    return calcMultiply.apply(void 0, __spread(args[0]));
+                }
+                else {
+                    return args[0];
+                }
+            }
+            else {
+                return args.reduce(function (accum, item) {
+                    if (Array.isArray(accum)) {
+                        return calcMultiply.apply(void 0, __spread(accum, [item]));
+                    }
+                    else if (Array.isArray(item)) {
+                        return calcMultiply.apply(void 0, __spread([accum], item));
+                    }
+                    else {
+                        return calc_1.multiply(accum, item);
+                    }
+                });
+            }
+        }
+        else {
+            return NaN;
+        }
     };
     exports.calcMultiply = calcMultiply;
     var calcMul = calcMultiply;
@@ -277,23 +352,44 @@
      *
      * @example
      * ```js
-     * calcDivision(1.1, 10)
-     * //=> 0.11
+     * calcDivision(1.1, 10, 2)
+     * //=> 0.055
      * ```
      *
-     * @param {number} num1
-     * @param {number} num2
+     * @param {...number[]} args
      * @returns {number}
      */
-    var calcDivision = function (num1, num2) {
-        num1 = Number(num1);
-        num2 = Number(num2);
-        var temp = 0, l1 = 0, l2 = 0, m = 0, s1 = num1.toString(), s2 = num2.toString();
-        l1 = getDecimalDigits(num1);
-        l2 = getDecimalDigits(num2);
-        m = Math.pow(10, (l2 - l1));
-        temp = Number.parseInt(s1.replace('.', '')) / Number.parseInt(s2.replace('.', ''));
-        return calcMul(temp, m);
+    var calcDivision = function () {
+        var args = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            args[_i] = arguments[_i];
+        }
+        if (args.length) {
+            if (args.length === 1) {
+                if (Array.isArray(args[0])) {
+                    return calcDivision.apply(void 0, __spread(args[0]));
+                }
+                else {
+                    return args[0];
+                }
+            }
+            else {
+                return args.reduce(function (accum, item) {
+                    if (Array.isArray(accum)) {
+                        return calcDivision.apply(void 0, __spread(accum, [item]));
+                    }
+                    else if (Array.isArray(item)) {
+                        return calcDivision.apply(void 0, __spread([accum], item));
+                    }
+                    else {
+                        return calc_1.division(accum, item);
+                    }
+                });
+            }
+        }
+        else {
+            return NaN;
+        }
     };
     exports.calcDivision = calcDivision;
     /**
@@ -305,21 +401,40 @@
      * //=> 0.1
      * ```
      *
-     * @param {number} num1
-     * @param {number} num2
+     * @param {...number[]} args
      * @returns {number}
      */
-    var calcModulo = function (num1, num2) {
-        num1 = Number(num1);
-        num2 = Number(num2);
-        var temp = 0, l1 = 0, l2 = 0, m = 0;
-        l1 = getDecimalDigits(num1);
-        l2 = getDecimalDigits(num2);
-        m = Math.pow(10, Math.max(l1, l2));
-        num1 = calcMul(num1, m);
-        num2 = calcMul(num2, m);
-        temp = num1 % num2;
-        return temp / m;
+    var calcModulo = function () {
+        var args = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            args[_i] = arguments[_i];
+        }
+        if (args.length) {
+            if (args.length === 1) {
+                if (Array.isArray(args[0])) {
+                    return calcModulo.apply(void 0, __spread(args[0]));
+                }
+                else {
+                    return args[0];
+                }
+            }
+            else {
+                return args.reduce(function (accum, item) {
+                    if (Array.isArray(accum)) {
+                        return calcModulo.apply(void 0, __spread(accum, [item]));
+                    }
+                    else if (Array.isArray(item)) {
+                        return calcModulo.apply(void 0, __spread([accum], item));
+                    }
+                    else {
+                        return calc_1.modulo(accum, item);
+                    }
+                });
+            }
+        }
+        else {
+            return NaN;
+        }
     };
     exports.calcModulo = calcModulo;
     /**

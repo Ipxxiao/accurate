@@ -3,63 +3,63 @@
  * @module accurate
  * @see doc https://github.com/Ipxxiao/accurate/tree/master/docs
  */
+interface CalcFunc {
+    <T>(arg: T): number;
+    <T>(...args: T[] | number[]): number;
+}
 /**
  * 精度加法计算
  *
  * @example
  * ```js
- * calcAdd(1.1, 0.3)
- * //=> 1.4
+ * calcAdd(1.1, 0.3, 0.1)
+ * //=> 1.5
  * ```
  *
- * @param {number} num1
- * @param {number} num2
+ * @param {...number[]} args
  * @returns {number}
  */
-declare const calcAdd: (num1: number, num2: number) => number;
+declare const calcAdd: CalcFunc;
 /**
  * 精度减法计算
  *
  * @example
  * ```js
- * calcSubtract(1.1, 0.2)
- * //=> 0.9
+ * calcSubtract(1.1, 0.2, 0.1)
+ * //=> 0.8
  * ```
  *
- * @param {number} num1
- * @param {number} num2
+ * @param {...number[]} args
  * @returns {number}
  */
-declare const calcSubtract: (num1: number, num2: number) => number;
+declare const calcSubtract: CalcFunc;
 /**
  * 精度乘法计算
  *
  * @example
  * ```js
- * calcMultiply(1.1, 0.1)
- * //=> 0.11
+ * calcMultiply(1.1, 0.1, 0.2)
+ * //=> 0.022
  * ```
  *
- * @param {number} num1
- * @param {number} num2
+ * @param {...number[]} args
  * @returns {number}
  */
-declare const calcMultiply: (num1: number, num2: number) => number;
-declare const calcMul: (num1: number, num2: number) => number;
+declare const calcMultiply: CalcFunc;
+declare const calcMul: CalcFunc;
 /**
  * 精度除法计算
  *
  * @example
  * ```js
- * calcDivision(1.1, 10)
- * //=> 0.11
+ * calcDivision(1.1, 10, 2)
+ * //=> 0.055
  * ```
  *
- * @param {number} num1
- * @param {number} num2
+ * @param {...number[]} args
  * @returns {number}
  */
-declare const calcDivision: (num1: number, num2: number) => number;
+declare const calcDivision: CalcFunc;
 /**
  * 精度取模计算
  *
@@ -69,11 +69,10 @@ declare const calcDivision: (num1: number, num2: number) => number;
  * //=> 0.1
  * ```
  *
- * @param {number} num1
- * @param {number} num2
+ * @param {...number[]} args
  * @returns {number}
  */
-declare const calcModulo: (num1: number, num2: number) => number;
+declare const calcModulo: CalcFunc;
 /**
  * 算术表达式计算
  *
@@ -89,12 +88,12 @@ declare const calcModulo: (num1: number, num2: number) => number;
 declare const calcExpr: (expr: string) => number;
 export { calcAdd, calcSubtract, calcMul, calcMultiply, calcDivision, calcModulo, calcExpr, };
 declare const _default: {
-    add: (num1: number, num2: number) => number;
-    subtract: (num1: number, num2: number) => number;
-    mul: (num1: number, num2: number) => number;
-    multiply: (num1: number, num2: number) => number;
-    division: (num1: number, num2: number) => number;
-    modulo: (num1: number, num2: number) => number;
+    add: CalcFunc;
+    subtract: CalcFunc;
+    mul: CalcFunc;
+    multiply: CalcFunc;
+    division: CalcFunc;
+    modulo: CalcFunc;
     expr: (expr: string) => number;
 };
 export default _default;

@@ -35,55 +35,55 @@ import accurate, { calcAdd, calcSubtract, calcMul, calcMultiply, calcDivision, c
 . **add**
 ``` javascript
 >
-1.1 + 0.3
-accurate.add(1.1, 0.3)
+1.1 + 0.3 + 0.1
+accurate.add(1.1, 0.3, 0.1)
 ```
 
 ``` javascript
 <-
-1.4000000000000001
-1.4
+1.5000000000000002
+1.5
 ```
 
 . **subtract**
 ``` javascript
 >
-1.1 - 0.2
-accurate.subtract(1.1, 0.2)
+1.1 - 0.2 - 0.1
+accurate.subtract(1.1, 0.2, 0.1)
 ```
 
 ``` javascript
 <-
-0.9000000000000001
-0.9
+0.8000000000000002
+0.8
 ```
 
 . **multiply**
 ``` javascript
 >
-1.1 * 0.1
-accurate.mul(1.1, 0.1)
-accurate.multiply(1.1, 0.1)
+1.1 * 0.1 * 0.2
+accurate.mul(1.1, 0.1, 0.2)
+accurate.multiply(1.1, 0.1, 0.2)
 ```
 
 ``` javascript
 <-
-0.11000000000000001
-0.11
-0.11
+0.022000000000000006
+0.022
+0.022
 ```
 
 . **division**
 ``` javascript
 >
-1.1 / 10
-accurate.division(1.1, 10)
+1.1 / 10 / 2
+accurate.division(1.1, 10, 2)
 ```
 
 ``` javascript
 <-
-0.11000000000000001
-0.11
+0.05500000000000001
+0.055
 ```
 
 . **modulo**
