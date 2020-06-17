@@ -37,9 +37,7 @@ import accurate, { calcAdd, calcSubtract, calcMul, calcMultiply, calcDivision, c
 >
 1.1 + 0.3 + 0.1
 accurate.add(1.1, 0.3, 0.1)
-```
 
-``` javascript
 <-
 1.5000000000000002
 1.5
@@ -50,9 +48,7 @@ accurate.add(1.1, 0.3, 0.1)
 >
 1.1 - 0.2 - 0.1
 accurate.subtract(1.1, 0.2, 0.1)
-```
 
-``` javascript
 <-
 0.8000000000000002
 0.8
@@ -64,9 +60,7 @@ accurate.subtract(1.1, 0.2, 0.1)
 1.1 * 0.1 * 0.2
 accurate.mul(1.1, 0.1, 0.2)
 accurate.multiply(1.1, 0.1, 0.2)
-```
 
-``` javascript
 <-
 0.022000000000000006
 0.022
@@ -78,9 +72,7 @@ accurate.multiply(1.1, 0.1, 0.2)
 >
 1.1 / 10 / 2
 accurate.division(1.1, 10, 2)
-```
 
-``` javascript
 <-
 0.05500000000000001
 0.055
@@ -91,9 +83,7 @@ accurate.division(1.1, 10, 2)
 >
 1.1 % 1
 accurate.modulo(1.1, 1)
-```
 
-``` javascript
 <-
 0.10000000000000009
 0.1
@@ -104,9 +94,7 @@ accurate.modulo(1.1, 1)
 >
 ((1.1+0.3)*4+2*3)/(1.1%0.3-1*0.1)-1*5
 accurate.expr('((1.1+0.3)*4+2*3)/(1.1%0.3-1*0.1)-1*5')
-```
 
-``` javascript
 <-
 110.99999999999987
 111
