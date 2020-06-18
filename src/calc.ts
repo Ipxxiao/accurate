@@ -5,10 +5,10 @@
  * @returns {number}
  */
 const getDecimalDigits = (num: number): number => {
-    const numArr = num.toString().split('.')
+    const numArr = num.toString().split('.');
 
     if (numArr.length > 1) {
-        const decimals = numArr[1]
+        const decimals = numArr[1];
 
         return decimals.length;
     } else {
@@ -95,7 +95,7 @@ export const multiply = (num1: number, num2: number): number => {
     l2 = getDecimalDigits(num2);
 
     m = 10 ** (l1 + l2);
-    temp = Number.parseInt(s1.replace('.', '')) * Number.parseInt(s2.replace('.', ''));
+    temp = Number(s1.replace('.', '')) * Number(s2.replace('.', ''));
 
     return temp / m;
 }
@@ -128,7 +128,7 @@ export const division = (num1: number, num2: number): number => {
     l2 = getDecimalDigits(num2);
 
     m = 10 ** (l2 - l1);
-    temp = Number.parseInt(s1.replace('.', '')) / Number.parseInt(s2.replace('.', ''));
+    temp = Number(s1.replace('.', '')) / Number(s2.replace('.', ''));
 
     return multiply(temp, m);
 }

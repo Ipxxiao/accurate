@@ -23,98 +23,77 @@ const DELIMITERS = {
 }
 
 /**
- * 扁平化数组
- *
- * @param {Function} calc
- * @param {...number[]} args
- * @returns {number}
- */
-const flat = (calc: Function, ...args: number[]): number => {
-    if (args.length) {
-        if (args.length === 1) {
-            if (Array.isArray(args[0])) {
-                return flat(calc, ...args[0])
-            } else {
-                return args[0]
-            }
-        } else {
-            return args.reduce((accum, item) => {
-                if (Array.isArray(accum)) {
-                    return flat(calc, ...accum, item)
-                } else if (Array.isArray(item)) {
-                    return flat(calc, accum, ...item)
-                } else {
-                    return calc(accum, item)
-                }
-            })
-        }
-    } else {
-        return NaN
-    }
-}
-
-/**
  * 获取表达式数组
  *
  * @param {string} expr
  * @returns {string[]}
  */
 const getExprArray = (expr: string): string[] => {
-    // 分隔为数组
-    const originalArr = String(expr).replace(/([\(\)\+\-\*/%])/g, ',$1,').split(',')
+    // 表达式分隔为数组
+    const originalArr: string[] = String(expr).replace(/([\(\)\+\-\*/%])/g, ',$1,').split(',')
     // 按计算顺序，组成多维数组
-    let exprArr = []
-    // 按计算顺序，分隔的子数组
-    let sub = {}
-    // 分隔的子数组keys
-    let idxs: any[] = []
-    // 分隔的子数组的索引
-    let idx = -1
+    let exprArr: string[] = []
+    // 存储分隔的子数组
+    let sub: object = {}
+    // 子数组键值集
+    let keys: string[] = []
+    // 子数组键值的索引
+    let idx: number = -1
 
-    for (let i in originalArr) {
-        let item = originalArr[i].trim()
+    for (const i in originalArr) {
+        const item: string = originalArr[i].trim()
+        // 当前指向的子数组键值
+        let point: string
 
         if (item === '') {
             continue
         } else if (DELIMITERS[item]) {
-            let point
-
             switch (item) {
                 case '(':
-                    point = idxs[idx]
+                    point = keys[idx]
+                    // 创建子数组（优先计算）
                     sub[i] = []
 
                     // 指向子数组
                     if (idx >= 0) {
-                        idxs.splice(++idx, 0, i)
                         sub[point].push(sub[i])
                     } else {
-                        idxs.splice(++idx, 0, i)
                         exprArr.push(sub[i])
                     }
+
+                    // 数组维度加1
+                    keys.splice(++idx, 0, i)
                     break;
 
                 case '*':
                 case '/':
                 case '%':
-                    point = idxs[idx]
+                    point = keys[idx]
 
                     // 指向子数组
                     if (idx >= 0) {
-                        // 前面存在表达式
+                        // 存在表达式
                         if (sub[point].length > 2) {
-                            idxs.splice(++idx, 0, i)
+                            // 数组维度加1
+                            keys.splice(++idx, 0, i)
+                            // 创建子数组（优先计算）
                             sub[i] = []
-                            sub[i].push(sub[point].pop()) // 从上个数组取出末尾的计算项
+                            // 从上个数组取出末尾的计算项
+                            sub[i].push(sub[point].pop())
                             sub[i].push(item)
                             sub[point].push(sub[i])
                         } else {
                             sub[point].push(item)
                         }
-                    } else if (exprArr.length > 2) {
-                        idxs.splice(++idx, 0, i)
+                    }
+                    // 存在表达式
+                    else if (exprArr.length > 2) {
+                        // 数组维度加1
+                        keys.splice(++idx, 0, i)
+                        // 创建子数组（优先计算）
                         sub[i] = []
-                        sub[i].push(exprArr.pop()) // 从表达式数组取出末尾的计算项
+                        // 从表达式数组取出末尾的计算项
+                        sub[i].push(exprArr.pop())
                         sub[i].push(item)
                         exprArr.push(sub[i])
                     } else {
@@ -126,29 +105,37 @@ const getExprArray = (expr: string): string[] => {
                 case '-':
                     // 指向子数组
                     if (idx >= 0) {
-                        sub[idxs[idx]].push(item)
+                        sub[keys[idx]].push(item)
                     } else {
                         exprArr.push(item)
                     }
                     break;
 
                 case ')':
+                    // 数组维度减1
                     --idx
                     break;
             }
         } else if (Number.isFinite(Number(item))) {
+            point = keys[idx]
+
             // 指向子数组
             if (idx >= 0) {
-                const point = idxs[idx]
-                const len = sub[point].length
+                // 前一个索引
+                const prevIdx: number = idx - 1
+                // 子数组最后一项的索引
+                const lastIdx: number = sub[point].length - 1
 
                 sub[point].push(item)
-                switch (sub[point][len - 1]) {
+
+                switch (sub[point][lastIdx]) {
                     case '*':
                     case '/':
                     case '%':
-                        // 索引前一个值指向子数组，与前面存在表达式
-                        if (idx - 1 >= 0 && sub[idxs[idx - 1]].length >= 2) {
+
+                        // 前一个为子数组，并且存在表达式（有过优先计算）
+                        if (prevIdx >= 0 && sub[keys[prevIdx]].length >= 2) {
+                            // 数组维度减1
                             --idx
                         }
                         break;
@@ -176,50 +163,53 @@ const getExprArray = (expr: string): string[] => {
 const exprArrayCalc = (exprArray: string[]): number => {
     const result = exprArray.reduce((accum, item, index, array) => {
         if (DELIMITERS[item]) {
-            const prev = array[index - 1]
-            const next = array[index + 1]
-            let a, b
+            const prevIdx: number = index - 1
+            const nextIdx: number = index + 1
+            const prev: string | string[] = array[prevIdx]
+            const next: string | string[] = array[nextIdx]
+            let num1: number,
+                num2: number
 
             if (Array.isArray(prev)) {
-                a = exprArrayCalc(prev)
-
+                // 递归
+                num1 = exprArrayCalc(prev)
                 // 数组项更新为计算结果
-                array[index - 1] = String(a)
-            } else if (index - 1 > 0) {
-                // 前面存在累计值
-                a = accum
+                array[prevIdx] = String(num1)
+            } else if (prevIdx > 0) {
+                // 前面存在累计值，使用累计值
+                num1 = accum
             } else {
-                a = Number(prev)
+                num1 = Number(prev)
             }
 
             if (Array.isArray(next)) {
-                b = exprArrayCalc(next)
-
+                // 递归
+                num2 = exprArrayCalc(next)
                 // 数组项更新为计算结果
-                array[index + 1] = String(b)
+                array[nextIdx] = String(num2)
             } else {
-                b = Number(next)
+                num2 = Number(next)
             }
 
             switch (item) {
                 case '+':
-                    accum = calcAdd(a, b)
+                    accum = calcAdd(num1, num2)
                     break;
 
                 case '-':
-                    accum = calcSubtract(a, b)
+                    accum = calcSubtract(num1, num2)
                     break;
 
                 case '*':
-                    accum = calcMul(a, b)
+                    accum = calcMul(num1, num2)
                     break;
 
                 case '/':
-                    accum = calcDivision(a, b)
+                    accum = calcDivision(num1, num2)
                     break;
 
                 case '%':
-                    accum = calcModulo(a, b)
+                    accum = calcModulo(num1, num2)
                     break;
             }
         }
@@ -228,6 +218,40 @@ const exprArrayCalc = (exprArray: string[]): number => {
     }, 0)
 
     return result
+}
+
+/**
+ * 扁平化数组
+ *
+ * @param {Function} calc
+ * @param {...number[]} args
+ * @returns {number}
+ */
+const flat = (calc: Function, ...args: number[]): number => {
+    if (args.length) {
+        if (args.length === 1) {
+            if (Array.isArray(args[0])) {
+                // 递归
+                return flat(calc, ...args[0])
+            } else {
+                return args[0]
+            }
+        } else {
+            return args.reduce((accum, item) => {
+                if (Array.isArray(accum)) {
+                    // 递归
+                    return flat(calc, ...accum, item)
+                } else if (Array.isArray(item)) {
+                    // 递归
+                    return flat(calc, accum, ...item)
+                } else {
+                    return calc(accum, item)
+                }
+            })
+        }
+    } else {
+        return NaN
+    }
 }
 
 /**

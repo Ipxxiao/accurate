@@ -86,7 +86,7 @@
         l1 = getDecimalDigits(num1);
         l2 = getDecimalDigits(num2);
         m = Math.pow(10, (l1 + l2));
-        temp = Number.parseInt(s1.replace('.', '')) * Number.parseInt(s2.replace('.', ''));
+        temp = Number(s1.replace('.', '')) * Number(s2.replace('.', ''));
         return temp / m;
     };
     /**
@@ -109,7 +109,7 @@
         l1 = getDecimalDigits(num1);
         l2 = getDecimalDigits(num2);
         m = Math.pow(10, (l2 - l1));
-        temp = Number.parseInt(s1.replace('.', '')) / Number.parseInt(s2.replace('.', ''));
+        temp = Number(s1.replace('.', '')) / Number(s2.replace('.', ''));
         return exports.multiply(temp, m);
     };
     /**
