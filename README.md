@@ -5,7 +5,7 @@
 [![codecov](https://codecov.io/gh/Ipxxiao/accurate/branch/master/graph/badge.svg)](https://codecov.io/gh/Ipxxiao/accurate)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
-accuracy calculation for js. 解决Javascript浮点运算精度问题。
+accuracy calculation for js. 解决Javascript精度计算（浮点数计算精度）问题。
 
 ## Browsers support
 
