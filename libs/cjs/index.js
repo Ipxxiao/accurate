@@ -37,6 +37,45 @@ var DELIMITERS = {
     '%': true,
 };
 /**
+ * 扁平化数组
+ *
+ * @param {Function} calc
+ * @param {...number[]} args
+ * @returns {number}
+ */
+var flat = function (calc) {
+    var args = [];
+    for (var _i = 1; _i < arguments.length; _i++) {
+        args[_i - 1] = arguments[_i];
+    }
+    if (args.length) {
+        if (args.length === 1) {
+            if (Array.isArray(args[0])) {
+                return flat.apply(void 0, __spread([calc], args[0]));
+            }
+            else {
+                return args[0];
+            }
+        }
+        else {
+            return args.reduce(function (accum, item) {
+                if (Array.isArray(accum)) {
+                    return flat.apply(void 0, __spread([calc], accum, [item]));
+                }
+                else if (Array.isArray(item)) {
+                    return flat.apply(void 0, __spread([calc, accum], item));
+                }
+                else {
+                    return calc(accum, item);
+                }
+            });
+        }
+    }
+    else {
+        return NaN;
+    }
+};
+/**
  * 获取表达式数组
  *
  * @param {string} expr
@@ -218,32 +257,7 @@ var calcAdd = function () {
     for (var _i = 0; _i < arguments.length; _i++) {
         args[_i] = arguments[_i];
     }
-    if (args.length) {
-        if (args.length === 1) {
-            if (Array.isArray(args[0])) {
-                return calcAdd.apply(void 0, __spread(args[0]));
-            }
-            else {
-                return args[0];
-            }
-        }
-        else {
-            return args.reduce(function (accum, item) {
-                if (Array.isArray(accum)) {
-                    return calcAdd.apply(void 0, __spread(accum, [item]));
-                }
-                else if (Array.isArray(item)) {
-                    return calcAdd.apply(void 0, __spread([accum], item));
-                }
-                else {
-                    return calc_1.add(accum, item);
-                }
-            });
-        }
-    }
-    else {
-        return NaN;
-    }
+    return flat.apply(void 0, __spread([calc_1.add], args));
 };
 exports.calcAdd = calcAdd;
 /**
@@ -263,32 +277,7 @@ var calcSubtract = function () {
     for (var _i = 0; _i < arguments.length; _i++) {
         args[_i] = arguments[_i];
     }
-    if (args.length) {
-        if (args.length === 1) {
-            if (Array.isArray(args[0])) {
-                return calcSubtract.apply(void 0, __spread(args[0]));
-            }
-            else {
-                return args[0];
-            }
-        }
-        else {
-            return args.reduce(function (accum, item) {
-                if (Array.isArray(accum)) {
-                    return calcSubtract.apply(void 0, __spread(accum, [item]));
-                }
-                else if (Array.isArray(item)) {
-                    return calcSubtract.apply(void 0, __spread([accum], item));
-                }
-                else {
-                    return calc_1.subtract(accum, item);
-                }
-            });
-        }
-    }
-    else {
-        return NaN;
-    }
+    return flat.apply(void 0, __spread([calc_1.subtract], args));
 };
 exports.calcSubtract = calcSubtract;
 /**
@@ -308,32 +297,7 @@ var calcMultiply = function () {
     for (var _i = 0; _i < arguments.length; _i++) {
         args[_i] = arguments[_i];
     }
-    if (args.length) {
-        if (args.length === 1) {
-            if (Array.isArray(args[0])) {
-                return calcMultiply.apply(void 0, __spread(args[0]));
-            }
-            else {
-                return args[0];
-            }
-        }
-        else {
-            return args.reduce(function (accum, item) {
-                if (Array.isArray(accum)) {
-                    return calcMultiply.apply(void 0, __spread(accum, [item]));
-                }
-                else if (Array.isArray(item)) {
-                    return calcMultiply.apply(void 0, __spread([accum], item));
-                }
-                else {
-                    return calc_1.multiply(accum, item);
-                }
-            });
-        }
-    }
-    else {
-        return NaN;
-    }
+    return flat.apply(void 0, __spread([calc_1.multiply], args));
 };
 exports.calcMultiply = calcMultiply;
 var calcMul = calcMultiply;
@@ -355,32 +319,7 @@ var calcDivision = function () {
     for (var _i = 0; _i < arguments.length; _i++) {
         args[_i] = arguments[_i];
     }
-    if (args.length) {
-        if (args.length === 1) {
-            if (Array.isArray(args[0])) {
-                return calcDivision.apply(void 0, __spread(args[0]));
-            }
-            else {
-                return args[0];
-            }
-        }
-        else {
-            return args.reduce(function (accum, item) {
-                if (Array.isArray(accum)) {
-                    return calcDivision.apply(void 0, __spread(accum, [item]));
-                }
-                else if (Array.isArray(item)) {
-                    return calcDivision.apply(void 0, __spread([accum], item));
-                }
-                else {
-                    return calc_1.division(accum, item);
-                }
-            });
-        }
-    }
-    else {
-        return NaN;
-    }
+    return flat.apply(void 0, __spread([calc_1.division], args));
 };
 exports.calcDivision = calcDivision;
 /**
@@ -400,32 +339,7 @@ var calcModulo = function () {
     for (var _i = 0; _i < arguments.length; _i++) {
         args[_i] = arguments[_i];
     }
-    if (args.length) {
-        if (args.length === 1) {
-            if (Array.isArray(args[0])) {
-                return calcModulo.apply(void 0, __spread(args[0]));
-            }
-            else {
-                return args[0];
-            }
-        }
-        else {
-            return args.reduce(function (accum, item) {
-                if (Array.isArray(accum)) {
-                    return calcModulo.apply(void 0, __spread(accum, [item]));
-                }
-                else if (Array.isArray(item)) {
-                    return calcModulo.apply(void 0, __spread([accum], item));
-                }
-                else {
-                    return calc_1.modulo(accum, item);
-                }
-            });
-        }
-    }
-    else {
-        return NaN;
-    }
+    return flat.apply(void 0, __spread([calc_1.modulo], args));
 };
 exports.calcModulo = calcModulo;
 /**

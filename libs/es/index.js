@@ -15,6 +15,41 @@ const DELIMITERS = {
     '%': true,
 };
 /**
+ * 扁平化数组
+ *
+ * @param {Function} calc
+ * @param {...number[]} args
+ * @returns {number}
+ */
+const flat = (calc, ...args) => {
+    if (args.length) {
+        if (args.length === 1) {
+            if (Array.isArray(args[0])) {
+                return flat(calc, ...args[0]);
+            }
+            else {
+                return args[0];
+            }
+        }
+        else {
+            return args.reduce((accum, item) => {
+                if (Array.isArray(accum)) {
+                    return flat(calc, ...accum, item);
+                }
+                else if (Array.isArray(item)) {
+                    return flat(calc, accum, ...item);
+                }
+                else {
+                    return calc(accum, item);
+                }
+            });
+        }
+    }
+    else {
+        return NaN;
+    }
+};
+/**
  * 获取表达式数组
  *
  * @param {string} expr
@@ -192,32 +227,7 @@ const exprArrayCalc = (exprArray) => {
  * @returns {number}
  */
 const calcAdd = (...args) => {
-    if (args.length) {
-        if (args.length === 1) {
-            if (Array.isArray(args[0])) {
-                return calcAdd(...args[0]);
-            }
-            else {
-                return args[0];
-            }
-        }
-        else {
-            return args.reduce((accum, item) => {
-                if (Array.isArray(accum)) {
-                    return calcAdd(...accum, item);
-                }
-                else if (Array.isArray(item)) {
-                    return calcAdd(accum, ...item);
-                }
-                else {
-                    return add(accum, item);
-                }
-            });
-        }
-    }
-    else {
-        return NaN;
-    }
+    return flat(add, ...args);
 };
 /**
  * 精度减法计算
@@ -232,32 +242,7 @@ const calcAdd = (...args) => {
  * @returns {number}
  */
 const calcSubtract = (...args) => {
-    if (args.length) {
-        if (args.length === 1) {
-            if (Array.isArray(args[0])) {
-                return calcSubtract(...args[0]);
-            }
-            else {
-                return args[0];
-            }
-        }
-        else {
-            return args.reduce((accum, item) => {
-                if (Array.isArray(accum)) {
-                    return calcSubtract(...accum, item);
-                }
-                else if (Array.isArray(item)) {
-                    return calcSubtract(accum, ...item);
-                }
-                else {
-                    return subtract(accum, item);
-                }
-            });
-        }
-    }
-    else {
-        return NaN;
-    }
+    return flat(subtract, ...args);
 };
 /**
  * 精度乘法计算
@@ -272,32 +257,7 @@ const calcSubtract = (...args) => {
  * @returns {number}
  */
 const calcMultiply = (...args) => {
-    if (args.length) {
-        if (args.length === 1) {
-            if (Array.isArray(args[0])) {
-                return calcMultiply(...args[0]);
-            }
-            else {
-                return args[0];
-            }
-        }
-        else {
-            return args.reduce((accum, item) => {
-                if (Array.isArray(accum)) {
-                    return calcMultiply(...accum, item);
-                }
-                else if (Array.isArray(item)) {
-                    return calcMultiply(accum, ...item);
-                }
-                else {
-                    return multiply(accum, item);
-                }
-            });
-        }
-    }
-    else {
-        return NaN;
-    }
+    return flat(multiply, ...args);
 };
 const calcMul = calcMultiply;
 /**
@@ -313,32 +273,7 @@ const calcMul = calcMultiply;
  * @returns {number}
  */
 const calcDivision = (...args) => {
-    if (args.length) {
-        if (args.length === 1) {
-            if (Array.isArray(args[0])) {
-                return calcDivision(...args[0]);
-            }
-            else {
-                return args[0];
-            }
-        }
-        else {
-            return args.reduce((accum, item) => {
-                if (Array.isArray(accum)) {
-                    return calcDivision(...accum, item);
-                }
-                else if (Array.isArray(item)) {
-                    return calcDivision(accum, ...item);
-                }
-                else {
-                    return division(accum, item);
-                }
-            });
-        }
-    }
-    else {
-        return NaN;
-    }
+    return flat(division, ...args);
 };
 /**
  * 精度取模计算
@@ -353,32 +288,7 @@ const calcDivision = (...args) => {
  * @returns {number}
  */
 const calcModulo = (...args) => {
-    if (args.length) {
-        if (args.length === 1) {
-            if (Array.isArray(args[0])) {
-                return calcModulo(...args[0]);
-            }
-            else {
-                return args[0];
-            }
-        }
-        else {
-            return args.reduce((accum, item) => {
-                if (Array.isArray(accum)) {
-                    return calcModulo(...accum, item);
-                }
-                else if (Array.isArray(item)) {
-                    return calcModulo(accum, ...item);
-                }
-                else {
-                    return modulo(accum, item);
-                }
-            });
-        }
-    }
-    else {
-        return NaN;
-    }
+    return flat(modulo, ...args);
 };
 /**
  * 算术表达式计算

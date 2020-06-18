@@ -13,6 +13,7 @@
         * [.calcDivision](#module_accurate.calcDivision) ⇒ <code>number</code>
         * [.calcModulo](#module_accurate.calcModulo) ⇒ <code>number</code>
     * _inner_
+        * [~flat(calc, ...args)](#module_accurate..flat) ⇒ <code>number</code>
         * [~getExprArray(expr)](#module_accurate..getExprArray) ⇒ <code>Array.&lt;string&gt;</code>
         * [~exprArrayCalc(exprArray)](#module_accurate..exprArrayCalc) ⇒ <code>number</code>
         * [~calcAdd(...args)](#module_accurate..calcAdd) ⇒ <code>number</code>
@@ -97,6 +98,18 @@ calcModulo(1.1, 1)
 calcExpr('((1.1+0.3)*4+2*3)/(3-1*0.1)-1*5')
 //=> -1
 ```
+<a name="module_accurate..flat"></a>
+
+### accurate~flat(calc, ...args) ⇒ <code>number</code>
+<p>扁平化数组</p>
+
+**Kind**: inner method of [<code>accurate</code>](#module_accurate)  
+
+| Param | Type |
+| --- | --- |
+| calc | <code>function</code> | 
+| ...args | <code>Array.&lt;number&gt;</code> | 
+
 <a name="module_accurate..getExprArray"></a>
 
 ### accurate~getExprArray(expr) ⇒ <code>Array.&lt;string&gt;</code>
