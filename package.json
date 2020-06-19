@@ -53,7 +53,7 @@
     },
     "zax": {
         "innerModule": false,
-        "needBuild": true,
+        "needBuild": false,
         "test": true,
         "docs": true,
         "cleanDirs": [
