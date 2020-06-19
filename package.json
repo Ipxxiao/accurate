@@ -9,14 +9,14 @@
     "keywords": [
         "accurate",
         "accuracy",
-        "accuracy calc",
         "accuracy calculation",
         "expr",
         "expression calc",
         "精度计算",
+        "表达式精度计算",
         "js 精度计算",
-        "js 浮点数计算",
-        "表达式精度计算"
+        "js 小数计算",
+        "js 浮点数计算"
     ],
     "homepage": "https://github.com/Ipxxiao/accurate",
     "author": "Jonas Hsiao",
