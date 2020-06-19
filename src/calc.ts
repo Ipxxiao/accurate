@@ -35,16 +35,11 @@ const getOffsetData = (num1: number, num2: number): OffsetData => {
     const len1: number = getDecimalDigits(num1);
     const len2: number = getDecimalDigits(num2);
     const digits: number = 10 ** Math.max(len1, len2);
-    const short: number = Math.min(len1, len2)
-    // 转换为整数
-    const temp1: number = Number(num1.toString().replace('.', ''));
-    // 转换为整数
-    const temp2: number = Number(num2.toString().replace('.', ''));
 
     return {
         digits,
-        int1: temp1 * 10 ** (len2 - short),
-        int2: temp2 * 10 ** (len1 - short),
+        int1: Math.round(num1 * digits),
+        int2: Math.round(num2 * digits),
     }
 }
 
