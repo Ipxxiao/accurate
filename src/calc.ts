@@ -1,3 +1,9 @@
+type OffsetData = {
+    int1: number
+    int2: number
+    digits: number
+}
+
 /**
  * 获取小数位数
  *
@@ -5,14 +11,40 @@
  * @returns {number}
  */
 const getDecimalDigits = (num: number): number => {
-    const numArr = num.toString().split('.');
+    // 拆分成整数和小数
+    const [integer, decimal] = num.toString().split('.');
 
-    if (numArr.length > 1) {
-        const decimals = numArr[1];
-
-        return decimals.length;
+    if (decimal) {
+        return decimal.length;
     } else {
         return 0;
+    }
+}
+
+/**
+ * 获取偏移数据
+ *
+ * @param {number} num1
+ * @param {number} num2
+ * @returns {OffsetData}
+ */
+const getOffsetData = (num1: number, num2: number): OffsetData => {
+    num1 = Number(num1);
+    num2 = Number(num2);
+
+    const len1: number = getDecimalDigits(num1);
+    const len2: number = getDecimalDigits(num2);
+    const digits: number = 10 ** Math.max(len1, len2);
+    const short: number = Math.min(len1, len2)
+    // 转换为整数
+    const temp1: number = Number(num1.toString().replace('.', ''));
+    // 转换为整数
+    const temp2: number = Number(num2.toString().replace('.', ''));
+
+    return {
+        digits,
+        int1: temp1 * 10 ** (len2 - short),
+        int2: temp2 * 10 ** (len1 - short),
     }
 }
 
@@ -30,21 +62,13 @@ const getDecimalDigits = (num: number): number => {
  * @returns {number}
  */
 export const add = (num1: number, num2: number): number => {
-    num1 = Number(num1);
-    num2 = Number(num2);
+    const {
+        int1,
+        int2,
+        digits,
+    } = getOffsetData(num1, num2);
 
-    let temp: number = 0,
-        l1: number = 0,
-        l2: number = 0,
-        m: number = 0;
-
-    l1 = getDecimalDigits(num1);
-    l2 = getDecimalDigits(num2);
-
-    m = 10 ** Math.max(l1, l2);
-    temp = multiply(num1, m) + multiply(num2, m);
-
-    return temp / m;
+    return (int1 + int2) / digits;
 }
 
 /**
@@ -61,9 +85,6 @@ export const add = (num1: number, num2: number): number => {
  * @returns {number}
  */
 export const subtract = (num1: number, num2: number): number => {
-    num1 = Number(num1);
-    num2 = Number(num2);
-
     return add(num1, -num2);
 }
 
@@ -81,23 +102,13 @@ export const subtract = (num1: number, num2: number): number => {
  * @returns {number}
  */
 export const multiply = (num1: number, num2: number): number => {
-    num1 = Number(num1);
-    num2 = Number(num2);
+    const {
+        int1,
+        int2,
+        digits,
+    } = getOffsetData(num1, num2);
 
-    let temp: number = 0,
-        l1: number = 0,
-        l2: number = 0,
-        m: number = 0,
-        s1: string = num1.toString(),
-        s2: string = num2.toString();
-
-    l1 = getDecimalDigits(num1);
-    l2 = getDecimalDigits(num2);
-
-    m = 10 ** (l1 + l2);
-    temp = Number(s1.replace('.', '')) * Number(s2.replace('.', ''));
-
-    return temp / m;
+    return int1 * int2 / digits ** 2;
 }
 
 /**
@@ -114,23 +125,13 @@ export const multiply = (num1: number, num2: number): number => {
  * @returns {number}
  */
 export const division = (num1: number, num2: number): number => {
-    num1 = Number(num1);
-    num2 = Number(num2);
+    const {
+        int1,
+        int2,
+        digits,
+    } = getOffsetData(num1, num2);
 
-    let temp: number = 0,
-        l1: number = 0,
-        l2: number = 0,
-        m: number = 0,
-        s1: string = num1.toString(),
-        s2: string = num2.toString();
-
-    l1 = getDecimalDigits(num1);
-    l2 = getDecimalDigits(num2);
-
-    m = 10 ** (l2 - l1);
-    temp = Number(s1.replace('.', '')) / Number(s2.replace('.', ''));
-
-    return multiply(temp, m);
+    return int1 / int2;
 }
 
 /**
@@ -147,21 +148,11 @@ export const division = (num1: number, num2: number): number => {
  * @returns {number}
  */
 export const modulo = (num1: number, num2: number): number => {
-    num1 = Number(num1);
-    num2 = Number(num2);
+    const {
+        int1,
+        int2,
+        digits,
+    } = getOffsetData(num1, num2);
 
-    let temp: number = 0,
-        l1: number = 0,
-        l2: number = 0,
-        m: number = 0;
-
-    l1 = getDecimalDigits(num1);
-    l2 = getDecimalDigits(num2);
-
-    m = 10 ** Math.max(l1, l2);
-    num1 = multiply(num1, m);
-    num2 = multiply(num2, m);
-    temp = num1 % num2;
-
-    return temp / m;
+    return int1 % int2 / digits;
 }

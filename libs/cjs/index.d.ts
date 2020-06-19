@@ -60,6 +60,7 @@ declare const calcMul: CalcFunc;
  * @returns {number}
  */
 declare const calcDivision: CalcFunc;
+declare const calcDivide: CalcFunc;
 /**
  * 精度取模计算
  *
@@ -86,13 +87,14 @@ declare const calcModulo: CalcFunc;
  * @returns {number}
  */
 declare const calcExpr: (expr: string) => number;
-export { calcAdd, calcSubtract, calcMul, calcMultiply, calcDivision, calcModulo, calcExpr, };
+export { calcAdd, calcSubtract, calcMul, calcMultiply, calcDivision, calcDivide, calcModulo, calcExpr, };
 declare const _default: {
     add: CalcFunc;
     subtract: CalcFunc;
     mul: CalcFunc;
     multiply: CalcFunc;
     division: CalcFunc;
+    divide: CalcFunc;
     modulo: CalcFunc;
     expr: (expr: string) => number;
 };

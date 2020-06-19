@@ -1,3 +1,19 @@
+var __read = (this && this.__read) || function (o, n) {
+    var m = typeof Symbol === "function" && o[Symbol.iterator];
+    if (!m) return o;
+    var i = m.call(o), r, ar = [], e;
+    try {
+        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
+    }
+    catch (error) { e = { error: error }; }
+    finally {
+        try {
+            if (r && !r.done && (m = i["return"])) m.call(i);
+        }
+        finally { if (e) throw e.error; }
+    }
+    return ar;
+};
 (function (factory) {
     if (typeof module === "object" && typeof module.exports === "object") {
         var v = factory(require, exports);
@@ -16,14 +32,38 @@
      * @returns {number}
      */
     var getDecimalDigits = function (num) {
-        var numArr = num.toString().split('.');
-        if (numArr.length > 1) {
-            var decimals = numArr[1];
-            return decimals.length;
+        // 拆分成整数和小数
+        var _a = __read(num.toString().split('.'), 2), integer = _a[0], decimal = _a[1];
+        if (decimal) {
+            return decimal.length;
         }
         else {
             return 0;
         }
+    };
+    /**
+     * 获取偏移数据
+     *
+     * @param {number} num1
+     * @param {number} num2
+     * @returns {OffsetData}
+     */
+    var getOffsetData = function (num1, num2) {
+        num1 = Number(num1);
+        num2 = Number(num2);
+        var len1 = getDecimalDigits(num1);
+        var len2 = getDecimalDigits(num2);
+        var digits = Math.pow(10, Math.max(len1, len2));
+        var short = Math.min(len1, len2);
+        // 转换为整数
+        var temp1 = Number(num1.toString().replace('.', ''));
+        // 转换为整数
+        var temp2 = Number(num2.toString().replace('.', ''));
+        return {
+            digits: digits,
+            int1: temp1 * Math.pow(10, (len2 - short)),
+            int2: temp2 * Math.pow(10, (len1 - short)),
+        };
     };
     /**
      * 精度加法计算
@@ -39,14 +79,8 @@
      * @returns {number}
      */
     exports.add = function (num1, num2) {
-        num1 = Number(num1);
-        num2 = Number(num2);
-        var temp = 0, l1 = 0, l2 = 0, m = 0;
-        l1 = getDecimalDigits(num1);
-        l2 = getDecimalDigits(num2);
-        m = Math.pow(10, Math.max(l1, l2));
-        temp = exports.multiply(num1, m) + exports.multiply(num2, m);
-        return temp / m;
+        var _a = getOffsetData(num1, num2), int1 = _a.int1, int2 = _a.int2, digits = _a.digits;
+        return (int1 + int2) / digits;
     };
     /**
      * 精度减法计算
@@ -62,8 +96,6 @@
      * @returns {number}
      */
     exports.subtract = function (num1, num2) {
-        num1 = Number(num1);
-        num2 = Number(num2);
         return exports.add(num1, -num2);
     };
     /**
@@ -80,14 +112,8 @@
      * @returns {number}
      */
     exports.multiply = function (num1, num2) {
-        num1 = Number(num1);
-        num2 = Number(num2);
-        var temp = 0, l1 = 0, l2 = 0, m = 0, s1 = num1.toString(), s2 = num2.toString();
-        l1 = getDecimalDigits(num1);
-        l2 = getDecimalDigits(num2);
-        m = Math.pow(10, (l1 + l2));
-        temp = Number(s1.replace('.', '')) * Number(s2.replace('.', ''));
-        return temp / m;
+        var _a = getOffsetData(num1, num2), int1 = _a.int1, int2 = _a.int2, digits = _a.digits;
+        return int1 * int2 / Math.pow(digits, 2);
     };
     /**
      * 精度除法计算
@@ -103,14 +129,8 @@
      * @returns {number}
      */
     exports.division = function (num1, num2) {
-        num1 = Number(num1);
-        num2 = Number(num2);
-        var temp = 0, l1 = 0, l2 = 0, m = 0, s1 = num1.toString(), s2 = num2.toString();
-        l1 = getDecimalDigits(num1);
-        l2 = getDecimalDigits(num2);
-        m = Math.pow(10, (l2 - l1));
-        temp = Number(s1.replace('.', '')) / Number(s2.replace('.', ''));
-        return exports.multiply(temp, m);
+        var _a = getOffsetData(num1, num2), int1 = _a.int1, int2 = _a.int2, digits = _a.digits;
+        return int1 / int2;
     };
     /**
      * 精度取模计算
@@ -126,16 +146,8 @@
      * @returns {number}
      */
     exports.modulo = function (num1, num2) {
-        num1 = Number(num1);
-        num2 = Number(num2);
-        var temp = 0, l1 = 0, l2 = 0, m = 0;
-        l1 = getDecimalDigits(num1);
-        l2 = getDecimalDigits(num2);
-        m = Math.pow(10, Math.max(l1, l2));
-        num1 = exports.multiply(num1, m);
-        num2 = exports.multiply(num2, m);
-        temp = num1 % num2;
-        return temp / m;
+        var _a = getOffsetData(num1, num2), int1 = _a.int1, int2 = _a.int2, digits = _a.digits;
+        return int1 % int2 / digits;
     };
 });
 //# sourceMappingURL=calc.js.map

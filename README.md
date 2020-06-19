@@ -32,7 +32,7 @@ import accurate, { calcAdd, calcSubtract, calcMul, calcMultiply, calcDivision, c
 ```
 
 
-. **add**
+. **add（加法）**
 ``` javascript
 >
 1.1 + 0.3 + 0.1
@@ -43,7 +43,7 @@ accurate.add(1.1, 0.3, 0.1)
 1.5
 ```
 
-. **subtract**
+. **subtract（减法）**
 ``` javascript
 >
 1.1 - 0.2 - 0.1
@@ -54,12 +54,12 @@ accurate.subtract(1.1, 0.2, 0.1)
 0.8
 ```
 
-. **multiply**
+. **multiply（乘法）**
 ``` javascript
 >
 1.1 * 0.1 * 0.2
-accurate.mul(1.1, 0.1, 0.2)
 accurate.multiply(1.1, 0.1, 0.2)
+accurate.mul(1.1, 0.1, 0.2)
 
 <-
 0.022000000000000006
@@ -67,18 +67,20 @@ accurate.multiply(1.1, 0.1, 0.2)
 0.022
 ```
 
-. **division**
+. **division（除法）**
 ``` javascript
 >
 1.1 / 10 / 2
 accurate.division(1.1, 10, 2)
+accurate.divide(1.1, 10, 2)
 
 <-
 0.05500000000000001
 0.055
+0.055
 ```
 
-. **modulo**
+. **modulo（取模）**
 ``` javascript
 >
 1.1 % 1
@@ -89,7 +91,7 @@ accurate.modulo(1.1, 1)
 0.1
 ```
 
-. **expr**
+. **expr（表达式）**
 ``` javascript
 >
 ((1.1+0.3)*4+2*3)/(1.1%0.3-1*0.1)-1*5
