@@ -1,8 +1,7 @@
-import accurate, { calcAdd, calcSubtract, calcMul, calcMultiply, calcDivision, calcModulo, calcExpr } from '../src/index'
-
+import accurate, { calcAdd, calcSubtract, calcMultiply, calcDivision, calcModulo, calcExpr } from '../src/index'
 import { log } from '../src/_utils/index'
 
-const methods = ['add', 'subtract', 'mul', 'multiply', 'division', 'modulo']
+const methods = ['add', 'subtract', 'mul', 'multiply', 'division', 'divide', 'modulo', 'expr']
 
 describe('accurate', () => {
 	methods.forEach(par => {
@@ -56,6 +55,7 @@ describe('accurate', () => {
 		expect(accurate.expr('1+3*4')).toEqual(13)
 		expect(accurate.expr('(1+3*4)*4')).toEqual(52)
 		expect(accurate.expr('((1.1+0.3)*4+2*3)/(1.1%0.3-1*0.1)-1*5')).toEqual(111)
+		expect(accurate.expr('0.1')).toEqual(0.1)
 		expect(accurate.expr('1.1a + 0.3')).toEqual(NaN)
 	})
 })

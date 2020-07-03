@@ -150,12 +150,16 @@ export const getExprArray = (expr: string): string[] => {
  * @returns {number}
  */
 export const exprArrayCalc = (exprArray: string[]): number => {
-    const result = exprArray.reduce((accum, item, index, array) => {
+    let accum: number = Number(exprArray[0])
+
+    for (let i = 0, len = exprArray.length; i < len; i++) {
+        const item: string = exprArray[i]
+
         if (DELIMITERS[item]) {
-            const prevIdx: number = index - 1
-            const nextIdx: number = index + 1
-            const prev: string | string[] = array[prevIdx]
-            const next: string | string[] = array[nextIdx]
+            const prevIdx: number = i - 1
+            const nextIdx: number = i + 1
+            const prev: string | string[] = exprArray[prevIdx]
+            const next: string | string[] = exprArray[nextIdx]
             let num1: number,
                 num2: number
 
@@ -163,7 +167,7 @@ export const exprArrayCalc = (exprArray: string[]): number => {
                 // 递归
                 num1 = exprArrayCalc(prev)
                 // 数组项更新为计算结果
-                array[prevIdx] = String(num1)
+                exprArray[prevIdx] = String(num1)
             } else if (prevIdx > 0) {
                 // 前面存在累计值，使用累计值
                 num1 = accum
@@ -175,7 +179,7 @@ export const exprArrayCalc = (exprArray: string[]): number => {
                 // 递归
                 num2 = exprArrayCalc(next)
                 // 数组项更新为计算结果
-                array[nextIdx] = String(num2)
+                exprArray[nextIdx] = String(num2)
             } else {
                 num2 = Number(next)
             }
@@ -202,9 +206,7 @@ export const exprArrayCalc = (exprArray: string[]): number => {
                     break;
             }
         }
+    }
 
-        return accum
-    }, 0)
-
-    return result
+    return accum
 }

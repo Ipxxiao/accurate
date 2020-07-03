@@ -20,26 +20,34 @@ interface CalcFunc {
  * @returns {number}
  */
 const flat = (calc: Function, ...args: number[]): number => {
-    if (args.length) {
-        if (args.length === 1) {
-            if (Array.isArray(args[0])) {
+    const len: number = args.length
+    const first: number | number[] = args[0]
+    let accum = first
+
+    if (len) {
+        if (len === 1) {
+            if (Array.isArray(first)) {
                 // 递归
-                return flat(calc, ...args[0])
+                return flat(calc, ...first)
             } else {
-                return args[0]
+                return first
             }
         } else {
-            return args.reduce((accum, item) => {
+            for (let i = 1; i < len; i++) {
+                const item: number | number[] = args[i]
+
                 if (Array.isArray(accum)) {
                     // 递归
-                    return flat(calc, ...accum, item)
+                    accum = flat(calc, ...accum, item)
                 } else if (Array.isArray(item)) {
                     // 递归
-                    return flat(calc, accum, ...item)
+                    accum = flat(calc, accum, ...item)
                 } else {
-                    return calc(accum, item)
+                    accum = calc(accum, item)
                 }
-            })
+            }
+
+            return accum
         }
     } else {
         return NaN

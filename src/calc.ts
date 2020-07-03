@@ -11,8 +11,7 @@ type OffsetData = {
  * @returns {number}
  */
 const getDecimalDigits = (num: number): number => {
-    // 拆分成整数和小数
-    const [integer, decimal] = num.toString().split('.');
+    const decimal: string = num.toString().split('.')[1];
 
     if (decimal) {
         return decimal.length;
