@@ -136,4 +136,4 @@
         modulo: exports.modulo,
     };
 });
-//# sourceMappingURL=calc.js.map
+//# sourceMappingURL=core.js.map

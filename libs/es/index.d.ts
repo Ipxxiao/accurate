@@ -19,7 +19,8 @@ interface CalcFunc {
  * @param {...number[]} args
  * @returns {number}
  */
-declare const add: CalcFunc;
+export declare const add: CalcFunc;
+export declare const addition: CalcFunc;
 /**
  * 精度减法计算
  *
@@ -32,7 +33,8 @@ declare const add: CalcFunc;
  * @param {...number[]} args
  * @returns {number}
  */
-declare const subtract: CalcFunc;
+export declare const subtract: CalcFunc;
+export declare const subtraction: CalcFunc;
 /**
  * 精度乘法计算
  *
@@ -45,8 +47,9 @@ declare const subtract: CalcFunc;
  * @param {...number[]} args
  * @returns {number}
  */
-declare const multiply: CalcFunc;
-declare const mul: CalcFunc;
+export declare const multiply: CalcFunc;
+export declare const mul: CalcFunc;
+export declare const multiplication: CalcFunc;
 /**
  * 精度除法计算
  *
@@ -59,8 +62,8 @@ declare const mul: CalcFunc;
  * @param {...number[]} args
  * @returns {number}
  */
-declare const division: CalcFunc;
-declare const divide: CalcFunc;
+export declare const division: CalcFunc;
+export declare const divide: CalcFunc;
 /**
  * 精度取模计算
  *
@@ -73,7 +76,8 @@ declare const divide: CalcFunc;
  * @param {...number[]} args
  * @returns {number}
  */
-declare const modulo: CalcFunc;
+export declare const modulo: CalcFunc;
+export declare const modulus: CalcFunc;
 /**
  * 算术表达式计算
  *
@@ -86,16 +90,19 @@ declare const modulo: CalcFunc;
  * @param {string} expr
  * @returns {number}
  */
-declare const expr: (expr: string) => number;
-export { add, subtract, multiply, mul, division, divide, modulo, expr, };
+export declare const expr: (expr: string) => number;
 declare const _default: {
     add: CalcFunc;
+    addition: CalcFunc;
     subtract: CalcFunc;
+    subtraction: CalcFunc;
     multiply: CalcFunc;
     mul: CalcFunc;
+    multiplication: CalcFunc;
     division: CalcFunc;
     divide: CalcFunc;
     modulo: CalcFunc;
+    modulus: CalcFunc;
     expr: (expr: string) => number;
 };
 export default _default;

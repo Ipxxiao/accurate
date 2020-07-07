@@ -5,7 +5,7 @@
 [![codecov](https://codecov.io/gh/Ipxxiao/accurate/branch/master/graph/badge.svg)](https://codecov.io/gh/Ipxxiao/accurate)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
-Accurate is an accuracy calculation for JavaScript and Nodejs. 解决JavaScript精度计算（浮点数计算精度）问题。
+Accurate is an precision calculation for JavaScript and Nodejs. 解决JavaScript精度计算（浮点数计算精度）问题。
 
 ## Browsers support
 
@@ -23,7 +23,7 @@ yarn add accurate
 
 ## Features
 
-- Supports numbers, decimals, strings, and arrays.
+- Supports numbers, decimals, strings, arrays, and matrices.
 - Contains arithmetic expression parser.
 - Runs on any JavaScript engine.
 - Is easily extensible.
@@ -32,9 +32,9 @@ yarn add accurate
 ## Usage
 
 ``` javascript 
-import accurate, { add, subtract, multiply, mul, division, divide, modulo, expr } from 'accurate'
+import accurate, { add, addition, subtract, subtraction, multiply, mul, multiplication, division, divide, modulo, modulus, expr, } from 'accurate'
 or
-const accurate, { add, subtract, multiply, mul, division, divide, modulo, expr } = require('accurate')
+const accurate, { add, addition, subtract, subtraction, multiply, mul, multiplication, division, divide, modulo, modulus, expr, } = require('accurate')
 ```
 
 
@@ -43,9 +43,11 @@ const accurate, { add, subtract, multiply, mul, division, divide, modulo, expr }
 >
 1.1 + 0.3 + 0.1
 accurate.add(1.1, 0.3, 0.1)
+addition(1.1, 0.3, 0.1)
 
 <-
 1.5000000000000002
+1.5
 1.5
 ```
 
@@ -54,9 +56,11 @@ accurate.add(1.1, 0.3, 0.1)
 >
 1.1 - 0.2 - 0.1
 accurate.subtract(1.1, 0.2, 0.1)
+subtraction(1.1, 0.2, 0.1)
 
 <-
 0.8000000000000002
+0.8
 0.8
 ```
 
@@ -66,9 +70,11 @@ accurate.subtract(1.1, 0.2, 0.1)
 1.1 * 0.1 * 0.2
 accurate.multiply(1.1, 0.1, 0.2)
 accurate.mul(1.1, 0.1, 0.2)
+multiplication(1.1, 0.1, 0.2)
 
 <-
 0.022000000000000006
+0.022
 0.022
 0.022
 ```
@@ -91,9 +97,11 @@ accurate.divide(1.1, 10, 2)
 >
 1.1 % 1
 accurate.modulo(1.1, 1)
+accurate.modulus(1.1, 1)
 
 <-
 0.10000000000000009
+0.1
 0.1
 ```
 

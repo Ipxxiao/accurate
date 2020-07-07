@@ -3,7 +3,7 @@
  * @module accurate
  * @see doc https://github.com/Ipxxiao/accurate/tree/master/docs
  */
-import calc from './calc';
+import calc from './core';
 import { getExprArray, exprArrayCalc } from './expr';
 /**
  * 扁平化数组
@@ -60,9 +60,10 @@ const flat = (calc, ...args) => {
  * @param {...number[]} args
  * @returns {number}
  */
-const add = (...args) => {
+export const add = (...args) => {
     return flat(calc.add, ...args);
 };
+export const addition = add;
 /**
  * 精度减法计算
  *
@@ -75,9 +76,10 @@ const add = (...args) => {
  * @param {...number[]} args
  * @returns {number}
  */
-const subtract = (...args) => {
+export const subtract = (...args) => {
     return flat(calc.subtract, ...args);
 };
+export const subtraction = subtract;
 /**
  * 精度乘法计算
  *
@@ -90,10 +92,11 @@ const subtract = (...args) => {
  * @param {...number[]} args
  * @returns {number}
  */
-const multiply = (...args) => {
+export const multiply = (...args) => {
     return flat(calc.multiply, ...args);
 };
-const mul = multiply;
+export const mul = multiply;
+export const multiplication = multiply;
 /**
  * 精度除法计算
  *
@@ -106,10 +109,10 @@ const mul = multiply;
  * @param {...number[]} args
  * @returns {number}
  */
-const division = (...args) => {
+export const division = (...args) => {
     return flat(calc.division, ...args);
 };
-const divide = division;
+export const divide = division;
 /**
  * 精度取模计算
  *
@@ -122,9 +125,10 @@ const divide = division;
  * @param {...number[]} args
  * @returns {number}
  */
-const modulo = (...args) => {
+export const modulo = (...args) => {
     return flat(calc.modulo, ...args);
 };
+export const modulus = modulo;
 /**
  * 算术表达式计算
  *
@@ -137,7 +141,7 @@ const modulo = (...args) => {
  * @param {string} expr
  * @returns {number}
  */
-const expr = (expr) => {
+export const expr = (expr) => {
     const exprArr = getExprArray(expr);
     if (exprArr.length) {
         return exprArrayCalc(exprArr);
@@ -146,15 +150,18 @@ const expr = (expr) => {
         return NaN;
     }
 };
-export { add, subtract, multiply, mul, division, divide, modulo, expr, };
 export default {
     add,
+    addition,
     subtract,
+    subtraction,
     multiply,
     mul,
+    multiplication,
     division,
     divide,
     modulo,
+    modulus,
     expr,
 };
 //# sourceMappingURL=index.js.map

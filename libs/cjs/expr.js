@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.exprArrayCalc = exports.getExprArray = void 0;
-var calc_1 = require("./calc");
+var core_1 = require("./core");
 // 分隔符
 var DELIMITERS = {
     '(': true,
@@ -177,19 +177,19 @@ exports.exprArrayCalc = function (exprArray) {
             }
             switch (item) {
                 case '+':
-                    accum = calc_1.add(num1, num2);
+                    accum = core_1.add(num1, num2);
                     break;
                 case '-':
-                    accum = calc_1.subtract(num1, num2);
+                    accum = core_1.subtract(num1, num2);
                     break;
                 case '*':
-                    accum = calc_1.multiply(num1, num2);
+                    accum = core_1.multiply(num1, num2);
                     break;
                 case '/':
-                    accum = calc_1.division(num1, num2);
+                    accum = core_1.division(num1, num2);
                     break;
                 case '%':
-                    accum = calc_1.modulo(num1, num2);
+                    accum = core_1.modulo(num1, num2);
                     break;
             }
         }

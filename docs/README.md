@@ -7,18 +7,18 @@
 
 * [accurate](#module_accurate)
     * _static_
-        * [.add](#module_accurate.add) ⇒ <code>number</code>
-        * [.subtract](#module_accurate.subtract) ⇒ <code>number</code>
-        * [.mul](#module_accurate.mul) ⇒ <code>number</code>
+        * [.addition](#module_accurate.addition) ⇒ <code>number</code>
+        * [.subtraction](#module_accurate.subtraction) ⇒ <code>number</code>
+        * [.multiplication](#module_accurate.multiplication) ⇒ <code>number</code>
         * [.divide](#module_accurate.divide) ⇒ <code>number</code>
-        * [.modulo](#module_accurate.modulo) ⇒ <code>number</code>
+        * [.modulus](#module_accurate.modulus) ⇒ <code>number</code>
     * _inner_
         * [~flat(calc, ...args)](#module_accurate..flat) ⇒ <code>number</code>
         * [~add(...args)](#module_accurate..add) ⇒ <code>number</code>
 
-<a name="module_accurate.add"></a>
+<a name="module_accurate.addition"></a>
 
-### accurate.add ⇒ <code>number</code>
+### accurate.addition ⇒ <code>number</code>
 <p>精度减法计算</p>
 
 **Kind**: static property of [<code>accurate</code>](#module_accurate)  
@@ -32,9 +32,9 @@
 subtract(1.1, 0.2, 0.1)
 //=> 0.8
 ```
-<a name="module_accurate.subtract"></a>
+<a name="module_accurate.subtraction"></a>
 
-### accurate.subtract ⇒ <code>number</code>
+### accurate.subtraction ⇒ <code>number</code>
 <p>精度乘法计算</p>
 
 **Kind**: static property of [<code>accurate</code>](#module_accurate)  
@@ -48,9 +48,9 @@ subtract(1.1, 0.2, 0.1)
 multiply(1.1, 0.1, 0.2)
 //=> 0.022
 ```
-<a name="module_accurate.mul"></a>
+<a name="module_accurate.multiplication"></a>
 
-### accurate.mul ⇒ <code>number</code>
+### accurate.multiplication ⇒ <code>number</code>
 <p>精度除法计算</p>
 
 **Kind**: static property of [<code>accurate</code>](#module_accurate)  
@@ -80,9 +80,9 @@ division(1.1, 10, 2)
 modulo(1.1, 1)
 //=> 0.1
 ```
-<a name="module_accurate.modulo"></a>
+<a name="module_accurate.modulus"></a>
 
-### accurate.modulo ⇒ <code>number</code>
+### accurate.modulus ⇒ <code>number</code>
 <p>算术表达式计算</p>
 
 **Kind**: static property of [<code>accurate</code>](#module_accurate)  

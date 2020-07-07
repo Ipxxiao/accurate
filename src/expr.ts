@@ -1,4 +1,4 @@
-import { add, subtract, multiply, division, modulo } from './calc'
+import { add, subtract, multiply, division, modulo } from './core'
 
 // 分隔符
 const DELIMITERS = {

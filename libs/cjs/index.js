@@ -28,8 +28,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.expr = exports.modulo = exports.divide = exports.division = exports.mul = exports.multiply = exports.subtract = exports.add = void 0;
-var calc_1 = __importDefault(require("./calc"));
+exports.expr = exports.modulus = exports.modulo = exports.divide = exports.division = exports.multiplication = exports.mul = exports.multiply = exports.subtraction = exports.subtract = exports.addition = exports.add = void 0;
+var core_1 = __importDefault(require("./core"));
 var expr_1 = require("./expr");
 /**
  * 扁平化数组
@@ -90,14 +90,14 @@ var flat = function (calc) {
  * @param {...number[]} args
  * @returns {number}
  */
-var add = function () {
+exports.add = function () {
     var args = [];
     for (var _i = 0; _i < arguments.length; _i++) {
         args[_i] = arguments[_i];
     }
-    return flat.apply(void 0, __spread([calc_1.default.add], args));
+    return flat.apply(void 0, __spread([core_1.default.add], args));
 };
-exports.add = add;
+exports.addition = exports.add;
 /**
  * 精度减法计算
  *
@@ -110,14 +110,14 @@ exports.add = add;
  * @param {...number[]} args
  * @returns {number}
  */
-var subtract = function () {
+exports.subtract = function () {
     var args = [];
     for (var _i = 0; _i < arguments.length; _i++) {
         args[_i] = arguments[_i];
     }
-    return flat.apply(void 0, __spread([calc_1.default.subtract], args));
+    return flat.apply(void 0, __spread([core_1.default.subtract], args));
 };
-exports.subtract = subtract;
+exports.subtraction = exports.subtract;
 /**
  * 精度乘法计算
  *
@@ -130,16 +130,15 @@ exports.subtract = subtract;
  * @param {...number[]} args
  * @returns {number}
  */
-var multiply = function () {
+exports.multiply = function () {
     var args = [];
     for (var _i = 0; _i < arguments.length; _i++) {
         args[_i] = arguments[_i];
     }
-    return flat.apply(void 0, __spread([calc_1.default.multiply], args));
+    return flat.apply(void 0, __spread([core_1.default.multiply], args));
 };
-exports.multiply = multiply;
-var mul = multiply;
-exports.mul = mul;
+exports.mul = exports.multiply;
+exports.multiplication = exports.multiply;
 /**
  * 精度除法计算
  *
@@ -152,16 +151,14 @@ exports.mul = mul;
  * @param {...number[]} args
  * @returns {number}
  */
-var division = function () {
+exports.division = function () {
     var args = [];
     for (var _i = 0; _i < arguments.length; _i++) {
         args[_i] = arguments[_i];
     }
-    return flat.apply(void 0, __spread([calc_1.default.division], args));
+    return flat.apply(void 0, __spread([core_1.default.division], args));
 };
-exports.division = division;
-var divide = division;
-exports.divide = divide;
+exports.divide = exports.division;
 /**
  * 精度取模计算
  *
@@ -174,14 +171,14 @@ exports.divide = divide;
  * @param {...number[]} args
  * @returns {number}
  */
-var modulo = function () {
+exports.modulo = function () {
     var args = [];
     for (var _i = 0; _i < arguments.length; _i++) {
         args[_i] = arguments[_i];
     }
-    return flat.apply(void 0, __spread([calc_1.default.modulo], args));
+    return flat.apply(void 0, __spread([core_1.default.modulo], args));
 };
-exports.modulo = modulo;
+exports.modulus = exports.modulo;
 /**
  * 算术表达式计算
  *
@@ -194,7 +191,7 @@ exports.modulo = modulo;
  * @param {string} expr
  * @returns {number}
  */
-var expr = function (expr) {
+exports.expr = function (expr) {
     var exprArr = expr_1.getExprArray(expr);
     if (exprArr.length) {
         return expr_1.exprArrayCalc(exprArr);
@@ -203,15 +200,18 @@ var expr = function (expr) {
         return NaN;
     }
 };
-exports.expr = expr;
 exports.default = {
-    add: add,
-    subtract: subtract,
-    multiply: multiply,
-    mul: mul,
-    division: division,
-    divide: divide,
-    modulo: modulo,
-    expr: expr,
+    add: exports.add,
+    addition: exports.addition,
+    subtract: exports.subtract,
+    subtraction: exports.subtraction,
+    multiply: exports.multiply,
+    mul: exports.mul,
+    multiplication: exports.multiplication,
+    division: exports.division,
+    divide: exports.divide,
+    modulo: exports.modulo,
+    modulus: exports.modulus,
+    expr: exports.expr,
 };
 //# sourceMappingURL=index.js.map

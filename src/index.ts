@@ -4,7 +4,7 @@
  * @see doc https://github.com/Ipxxiao/accurate/tree/master/docs
  */
 
-import calc from './calc'
+import calc from './core'
 import { getExprArray, exprArrayCalc } from './expr'
 
 interface CalcFunc {
@@ -66,9 +66,10 @@ const flat = (calc: Function, ...args: number[]): number => {
  * @param {...number[]} args
  * @returns {number}
  */
-const add: CalcFunc = (...args: number[]): number => {
+export const add: CalcFunc = (...args: number[]): number => {
     return flat(calc.add, ...args)
 }
+export const addition = add
 
 /**
  * 精度减法计算
@@ -82,9 +83,10 @@ const add: CalcFunc = (...args: number[]): number => {
  * @param {...number[]} args
  * @returns {number}
  */
-const subtract: CalcFunc = (...args: number[]): number => {
+export const subtract: CalcFunc = (...args: number[]): number => {
     return flat(calc.subtract, ...args)
 }
+export const subtraction = subtract
 
 /**
  * 精度乘法计算
@@ -98,10 +100,11 @@ const subtract: CalcFunc = (...args: number[]): number => {
  * @param {...number[]} args
  * @returns {number}
  */
-const multiply: CalcFunc = (...args: number[]): number => {
+export const multiply: CalcFunc = (...args: number[]): number => {
     return flat(calc.multiply, ...args)
 }
-const mul = multiply
+export const mul = multiply
+export const multiplication = multiply
 
 /**
  * 精度除法计算
@@ -115,10 +118,10 @@ const mul = multiply
  * @param {...number[]} args
  * @returns {number}
  */
-const division: CalcFunc = (...args: number[]): number => {
+export const division: CalcFunc = (...args: number[]): number => {
     return flat(calc.division, ...args)
 }
-const divide = division
+export const divide = division
 
 /**
  * 精度取模计算
@@ -132,9 +135,10 @@ const divide = division
  * @param {...number[]} args
  * @returns {number}
  */
-const modulo: CalcFunc = (...args: number[]): number => {
+export const modulo: CalcFunc = (...args: number[]): number => {
     return flat(calc.modulo, ...args)
 }
+export const modulus = modulo
 
 /**
  * 算术表达式计算
@@ -148,7 +152,7 @@ const modulo: CalcFunc = (...args: number[]): number => {
  * @param {string} expr
  * @returns {number}
  */
-const expr = (expr: string): number => {
+export const expr = (expr: string): number => {
     const exprArr = getExprArray(expr)
 
     if (exprArr.length) {
@@ -158,24 +162,17 @@ const expr = (expr: string): number => {
     }
 }
 
-export {
-    add,
-    subtract,
-    multiply,
-    mul,
-    division,
-    divide,
-    modulo,
-    expr,
-};
-
 export default {
     add,
+    addition,
     subtract,
+    subtraction,
     multiply,
     mul,
+    multiplication,
     division,
     divide,
     modulo,
+    modulus,
     expr,
 };
