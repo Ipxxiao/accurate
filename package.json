@@ -11,9 +11,9 @@
         "accuracy",
         "accuracy calculation",
         "expr",
-        "expression",
-        "floating point number",
-        "decimal",
+        "arithmetic expression",
+        "js floating point number",
+        "js decimal",
         "精度计算",
         "表达式精度计算",
         "js 精度计算",
@@ -55,7 +55,7 @@
     },
     "zax": {
         "innerModule": false,
-        "needBuild": false,
+        "needBuild": true,
         "test": true,
         "docs": true,
         "cleanDirs": [
