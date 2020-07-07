@@ -1,11 +1,11 @@
-# accurate
+# Accurate
 
 [![NPM version](https://img.shields.io/npm/v/accurate.svg?style=flat)](https://www.npmjs.com/package/accurate)
 [![Build Status](https://travis-ci.org/Ipxxiao/accurate.svg?branch=master)](https://travis-ci.org/Ipxxiao/accurate)
 [![codecov](https://codecov.io/gh/Ipxxiao/accurate/branch/master/graph/badge.svg)](https://codecov.io/gh/Ipxxiao/accurate)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
-accuracy calculation for js. 解决Javascript精度计算（浮点数计算精度）问题。
+Accurate is an accuracy calculation for JavaScript and Nodejs. 解决JavaScript精度计算（浮点数计算精度）问题。
 
 ## Browsers support
 
@@ -13,7 +13,7 @@ accuracy calculation for js. 解决Javascript精度计算（浮点数计算精�
 | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | IE8+ Edge+                                                                                                                                                                                                      | last 10 versions                                                                                                                                                                                                  | last 10 versions                                                                                                                                                                                              | last 2 versions                                                                                                                                                                                               | last 2 versions                                                                                                                                                                                                               | last 2 versions                                                                                                                                                                                           |
 
-## install
+## Install
 
 ``` base
 npm i accurate -S
@@ -21,13 +21,15 @@ or
 yarn add accurate
 ```
 
-## build with rollup
+## Features
 
-``` base
-npm run build
-```
+- Supports numbers, decimals, strings, and arrays.
+- Contains arithmetic expression parser.
+- Runs on any JavaScript engine.
+- Is easily extensible.
+- Open source.
 
-## use
+## Usage
 
 ``` javascript 
 import accurate, { add, subtract, multiply, mul, division, divide, modulo, expr } from 'accurate'
@@ -104,6 +106,12 @@ accurate.expr('((1.1+0.3)*4+2*3)/(1.1%0.3-1*0.1)-1*5')
 <-
 110.99999999999987
 111
+```
+
+## Build with rollup
+
+``` base
+npm run build
 ```
 
 ## More
