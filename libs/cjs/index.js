@@ -24,8 +24,11 @@ var __spread = (this && this.__spread) || function () {
     for (var ar = [], i = 0; i < arguments.length; i++) ar = ar.concat(__read(arguments[i]));
     return ar;
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-var calc_1 = require("./calc");
+var calc_1 = __importDefault(require("./calc"));
 var expr_1 = require("./expr");
 /**
  * 扁平化数组
@@ -79,118 +82,118 @@ var flat = function (calc) {
  *
  * @example
  * ```js
- * calcAdd(1.1, 0.3, 0.1)
+ * add(1.1, 0.3, 0.1)
  * //=> 1.5
  * ```
  *
  * @param {...number[]} args
  * @returns {number}
  */
-var calcAdd = function () {
+var add = function () {
     var args = [];
     for (var _i = 0; _i < arguments.length; _i++) {
         args[_i] = arguments[_i];
     }
-    return flat.apply(void 0, __spread([calc_1.add], args));
+    return flat.apply(void 0, __spread([calc_1.default.add], args));
 };
-exports.calcAdd = calcAdd;
+exports.add = add;
 /**
  * 精度减法计算
  *
  * @example
  * ```js
- * calcSubtract(1.1, 0.2, 0.1)
+ * subtract(1.1, 0.2, 0.1)
  * //=> 0.8
  * ```
  *
  * @param {...number[]} args
  * @returns {number}
  */
-var calcSubtract = function () {
+var subtract = function () {
     var args = [];
     for (var _i = 0; _i < arguments.length; _i++) {
         args[_i] = arguments[_i];
     }
-    return flat.apply(void 0, __spread([calc_1.subtract], args));
+    return flat.apply(void 0, __spread([calc_1.default.subtract], args));
 };
-exports.calcSubtract = calcSubtract;
+exports.subtract = subtract;
 /**
  * 精度乘法计算
  *
  * @example
  * ```js
- * calcMultiply(1.1, 0.1, 0.2)
+ * multiply(1.1, 0.1, 0.2)
  * //=> 0.022
  * ```
  *
  * @param {...number[]} args
  * @returns {number}
  */
-var calcMultiply = function () {
+var multiply = function () {
     var args = [];
     for (var _i = 0; _i < arguments.length; _i++) {
         args[_i] = arguments[_i];
     }
-    return flat.apply(void 0, __spread([calc_1.multiply], args));
+    return flat.apply(void 0, __spread([calc_1.default.multiply], args));
 };
-exports.calcMultiply = calcMultiply;
-var calcMul = calcMultiply;
-exports.calcMul = calcMul;
+exports.multiply = multiply;
+var mul = multiply;
+exports.mul = mul;
 /**
  * 精度除法计算
  *
  * @example
  * ```js
- * calcDivision(1.1, 10, 2)
+ * division(1.1, 10, 2)
  * //=> 0.055
  * ```
  *
  * @param {...number[]} args
  * @returns {number}
  */
-var calcDivision = function () {
+var division = function () {
     var args = [];
     for (var _i = 0; _i < arguments.length; _i++) {
         args[_i] = arguments[_i];
     }
-    return flat.apply(void 0, __spread([calc_1.division], args));
+    return flat.apply(void 0, __spread([calc_1.default.division], args));
 };
-exports.calcDivision = calcDivision;
-var calcDivide = calcDivision;
-exports.calcDivide = calcDivide;
+exports.division = division;
+var divide = division;
+exports.divide = divide;
 /**
  * 精度取模计算
  *
  * @example
  * ```js
- * calcModulo(1.1, 1)
+ * modulo(1.1, 1)
  * //=> 0.1
  * ```
  *
  * @param {...number[]} args
  * @returns {number}
  */
-var calcModulo = function () {
+var modulo = function () {
     var args = [];
     for (var _i = 0; _i < arguments.length; _i++) {
         args[_i] = arguments[_i];
     }
-    return flat.apply(void 0, __spread([calc_1.modulo], args));
+    return flat.apply(void 0, __spread([calc_1.default.modulo], args));
 };
-exports.calcModulo = calcModulo;
+exports.modulo = modulo;
 /**
  * 算术表达式计算
  *
  * @example
  * ```js
- * calcExpr('((1.1+0.3)*4+2*3)/(3-1*0.1)-1*5')
+ * expr('((1.1+0.3)*4+2*3)/(3-1*0.1)-1*5')
  * //=> -1
  * ```
  *
  * @param {string} expr
  * @returns {number}
  */
-var calcExpr = function (expr) {
+var expr = function (expr) {
     var exprArr = expr_1.getExprArray(expr);
     if (exprArr.length) {
         return expr_1.exprArrayCalc(exprArr);
@@ -199,15 +202,15 @@ var calcExpr = function (expr) {
         return NaN;
     }
 };
-exports.calcExpr = calcExpr;
+exports.expr = expr;
 exports.default = {
-    add: calcAdd,
-    subtract: calcSubtract,
-    mul: calcMul,
-    multiply: calcMultiply,
-    division: calcDivision,
-    divide: calcDivide,
-    modulo: calcModulo,
-    expr: calcExpr,
+    add: add,
+    subtract: subtract,
+    multiply: multiply,
+    mul: mul,
+    division: division,
+    divide: divide,
+    modulo: modulo,
+    expr: expr,
 };
 //# sourceMappingURL=index.js.map

@@ -150,3 +150,11 @@ export const modulo = (num1: number, num2: number): number => {
 
     return int1 % int2 / digits;
 }
+
+export default {
+    add,
+    subtract,
+    multiply,
+    division,
+    modulo,
+};

@@ -116,4 +116,11 @@ export const modulo = (num1, num2) => {
     const { int1, int2, digits, } = getOffsetData(num1, num2);
     return int1 % int2 / digits;
 };
+export default {
+    add,
+    subtract,
+    multiply,
+    division,
+    modulo,
+};
 //# sourceMappingURL=calc.js.map

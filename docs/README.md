@@ -7,18 +7,18 @@
 
 * [accurate](#module_accurate)
     * _static_
-        * [.calcAdd](#module_accurate.calcAdd) ⇒ <code>number</code>
-        * [.calcSubtract](#module_accurate.calcSubtract) ⇒ <code>number</code>
-        * [.calcMul](#module_accurate.calcMul) ⇒ <code>number</code>
-        * [.calcDivide](#module_accurate.calcDivide) ⇒ <code>number</code>
-        * [.calcModulo](#module_accurate.calcModulo) ⇒ <code>number</code>
+        * [.add](#module_accurate.add) ⇒ <code>number</code>
+        * [.subtract](#module_accurate.subtract) ⇒ <code>number</code>
+        * [.mul](#module_accurate.mul) ⇒ <code>number</code>
+        * [.divide](#module_accurate.divide) ⇒ <code>number</code>
+        * [.modulo](#module_accurate.modulo) ⇒ <code>number</code>
     * _inner_
         * [~flat(calc, ...args)](#module_accurate..flat) ⇒ <code>number</code>
-        * [~calcAdd(...args)](#module_accurate..calcAdd) ⇒ <code>number</code>
+        * [~add(...args)](#module_accurate..add) ⇒ <code>number</code>
 
-<a name="module_accurate.calcAdd"></a>
+<a name="module_accurate.add"></a>
 
-### accurate.calcAdd ⇒ <code>number</code>
+### accurate.add ⇒ <code>number</code>
 <p>精度减法计算</p>
 
 **Kind**: static property of [<code>accurate</code>](#module_accurate)  
@@ -29,12 +29,12 @@
 
 **Example**  
 ```js
-calcSubtract(1.1, 0.2, 0.1)
+subtract(1.1, 0.2, 0.1)
 //=> 0.8
 ```
-<a name="module_accurate.calcSubtract"></a>
+<a name="module_accurate.subtract"></a>
 
-### accurate.calcSubtract ⇒ <code>number</code>
+### accurate.subtract ⇒ <code>number</code>
 <p>精度乘法计算</p>
 
 **Kind**: static property of [<code>accurate</code>](#module_accurate)  
@@ -45,12 +45,12 @@ calcSubtract(1.1, 0.2, 0.1)
 
 **Example**  
 ```js
-calcMultiply(1.1, 0.1, 0.2)
+multiply(1.1, 0.1, 0.2)
 //=> 0.022
 ```
-<a name="module_accurate.calcMul"></a>
+<a name="module_accurate.mul"></a>
 
-### accurate.calcMul ⇒ <code>number</code>
+### accurate.mul ⇒ <code>number</code>
 <p>精度除法计算</p>
 
 **Kind**: static property of [<code>accurate</code>](#module_accurate)  
@@ -61,12 +61,12 @@ calcMultiply(1.1, 0.1, 0.2)
 
 **Example**  
 ```js
-calcDivision(1.1, 10, 2)
+division(1.1, 10, 2)
 //=> 0.055
 ```
-<a name="module_accurate.calcDivide"></a>
+<a name="module_accurate.divide"></a>
 
-### accurate.calcDivide ⇒ <code>number</code>
+### accurate.divide ⇒ <code>number</code>
 <p>精度取模计算</p>
 
 **Kind**: static property of [<code>accurate</code>](#module_accurate)  
@@ -77,12 +77,12 @@ calcDivision(1.1, 10, 2)
 
 **Example**  
 ```js
-calcModulo(1.1, 1)
+modulo(1.1, 1)
 //=> 0.1
 ```
-<a name="module_accurate.calcModulo"></a>
+<a name="module_accurate.modulo"></a>
 
-### accurate.calcModulo ⇒ <code>number</code>
+### accurate.modulo ⇒ <code>number</code>
 <p>算术表达式计算</p>
 
 **Kind**: static property of [<code>accurate</code>](#module_accurate)  
@@ -93,7 +93,7 @@ calcModulo(1.1, 1)
 
 **Example**  
 ```js
-calcExpr('((1.1+0.3)*4+2*3)/(3-1*0.1)-1*5')
+expr('((1.1+0.3)*4+2*3)/(3-1*0.1)-1*5')
 //=> -1
 ```
 <a name="module_accurate..flat"></a>
@@ -108,9 +108,9 @@ calcExpr('((1.1+0.3)*4+2*3)/(3-1*0.1)-1*5')
 | calc | <code>function</code> | 
 | ...args | <code>Array.&lt;number&gt;</code> | 
 
-<a name="module_accurate..calcAdd"></a>
+<a name="module_accurate..add"></a>
 
-### accurate~calcAdd(...args) ⇒ <code>number</code>
+### accurate~add(...args) ⇒ <code>number</code>
 <p>精度加法计算</p>
 
 **Kind**: inner method of [<code>accurate</code>](#module_accurate)  
@@ -121,6 +121,6 @@ calcExpr('((1.1+0.3)*4+2*3)/(3-1*0.1)-1*5')
 
 **Example**  
 ```js
-calcAdd(1.1, 0.3, 0.1)
+add(1.1, 0.3, 0.1)
 //=> 1.5
 ```

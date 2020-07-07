@@ -118,4 +118,11 @@ exports.modulo = function (num1, num2) {
     var _a = getOffsetData(num1, num2), int1 = _a.int1, int2 = _a.int2, digits = _a.digits;
     return int1 % int2 / digits;
 };
+exports.default = {
+    add: exports.add,
+    subtract: exports.subtract,
+    multiply: exports.multiply,
+    division: exports.division,
+    modulo: exports.modulo,
+};
 //# sourceMappingURL=calc.js.map

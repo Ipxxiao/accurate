@@ -1,7 +1,7 @@
-import accurate, { calcAdd, calcSubtract, calcMultiply, calcDivision, calcModulo, calcExpr } from '../src/index'
+import accurate, { add, subtract, multiply, mul, division, divide, modulo, expr } from '../src/index'
 import { log } from '../src/_utils/index'
 
-const methods = ['add', 'subtract', 'mul', 'multiply', 'division', 'divide', 'modulo', 'expr']
+const methods = ['add', 'subtract', 'multiply', 'mul', 'division', 'divide', 'modulo', 'expr']
 
 describe('accurate', () => {
 	methods.forEach(par => {
@@ -35,12 +35,28 @@ describe('accurate', () => {
 		expect(accurate.multiply()).toEqual(NaN)
 	})
 
+	it(`mul`, () => {
+		expect(accurate.mul(1.1, 0.1, 0.2)).toEqual(0.022)
+		expect(accurate.mul([1.1, 0.1, 0.2])).toEqual(0.022)
+		expect(accurate.mul([1.1, 0.1, 0.2], [[10, 100], 1])).toEqual(22)
+		expect(accurate.mul(0.1)).toEqual(0.1)
+		expect(accurate.mul()).toEqual(NaN)
+	})
+
 	it(`division`, () => {
 		expect(accurate.division(1.1, 10, 2)).toEqual(0.055)
 		expect(accurate.division([1.1, 10, 2])).toEqual(0.055)
 		expect(accurate.division([101.1, 10, 2], [[4, 5], 3])).toEqual(0.08425)
 		expect(accurate.division(0.1)).toEqual(0.1)
 		expect(accurate.division()).toEqual(NaN)
+	})
+
+	it(`divide`, () => {
+		expect(accurate.divide(1.1, 10, 2)).toEqual(0.055)
+		expect(accurate.divide([1.1, 10, 2])).toEqual(0.055)
+		expect(accurate.divide([101.1, 10, 2], [[4, 5], 3])).toEqual(0.08425)
+		expect(accurate.divide(0.1)).toEqual(0.1)
+		expect(accurate.divide()).toEqual(NaN)
 	})
 
 	it(`modulo`, () => {

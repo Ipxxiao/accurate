@@ -68,3 +68,11 @@ export declare const division: (num1: number, num2: number) => number;
  * @returns {number}
  */
 export declare const modulo: (num1: number, num2: number) => number;
+declare const _default: {
+    add: (num1: number, num2: number) => number;
+    subtract: (num1: number, num2: number) => number;
+    multiply: (num1: number, num2: number) => number;
+    division: (num1: number, num2: number) => number;
+    modulo: (num1: number, num2: number) => number;
+};
+export default _default;

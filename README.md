@@ -28,7 +28,9 @@ npm run build
 ## use
 
 ``` javascript 
-import accurate, { calcAdd, calcSubtract, calcMul, calcMultiply, calcDivision, calcModulo, calcExpr } from 'accurate'
+import accurate, { add, subtract, multiply, mul, division, divide, modulo, expr } from 'accurate'
+or
+const accurate, { add, subtract, multiply, mul, division, divide, modulo, expr } = require('accurate')
 ```
 
 

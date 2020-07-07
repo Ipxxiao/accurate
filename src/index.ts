@@ -4,7 +4,7 @@
  * @see doc https://github.com/Ipxxiao/accurate/tree/master/docs
  */
 
-import { add, subtract, multiply, division, modulo } from './calc'
+import calc from './calc'
 import { getExprArray, exprArrayCalc } from './expr'
 
 interface CalcFunc {
@@ -59,15 +59,15 @@ const flat = (calc: Function, ...args: number[]): number => {
  *
  * @example
  * ```js
- * calcAdd(1.1, 0.3, 0.1)
+ * add(1.1, 0.3, 0.1)
  * //=> 1.5
  * ```
  *
  * @param {...number[]} args
  * @returns {number}
  */
-const calcAdd: CalcFunc = (...args: number[]): number => {
-    return flat(add, ...args)
+const add: CalcFunc = (...args: number[]): number => {
+    return flat(calc.add, ...args)
 }
 
 /**
@@ -75,15 +75,15 @@ const calcAdd: CalcFunc = (...args: number[]): number => {
  *
  * @example
  * ```js
- * calcSubtract(1.1, 0.2, 0.1)
+ * subtract(1.1, 0.2, 0.1)
  * //=> 0.8
  * ```
  *
  * @param {...number[]} args
  * @returns {number}
  */
-const calcSubtract: CalcFunc = (...args: number[]): number => {
-    return flat(subtract, ...args)
+const subtract: CalcFunc = (...args: number[]): number => {
+    return flat(calc.subtract, ...args)
 }
 
 /**
@@ -91,49 +91,49 @@ const calcSubtract: CalcFunc = (...args: number[]): number => {
  *
  * @example
  * ```js
- * calcMultiply(1.1, 0.1, 0.2)
+ * multiply(1.1, 0.1, 0.2)
  * //=> 0.022
  * ```
  *
  * @param {...number[]} args
  * @returns {number}
  */
-const calcMultiply: CalcFunc = (...args: number[]): number => {
-    return flat(multiply, ...args)
+const multiply: CalcFunc = (...args: number[]): number => {
+    return flat(calc.multiply, ...args)
 }
-const calcMul = calcMultiply
+const mul = multiply
 
 /**
  * 精度除法计算
  *
  * @example
  * ```js
- * calcDivision(1.1, 10, 2)
+ * division(1.1, 10, 2)
  * //=> 0.055
  * ```
  *
  * @param {...number[]} args
  * @returns {number}
  */
-const calcDivision: CalcFunc = (...args: number[]): number => {
-    return flat(division, ...args)
+const division: CalcFunc = (...args: number[]): number => {
+    return flat(calc.division, ...args)
 }
-const calcDivide = calcDivision
+const divide = division
 
 /**
  * 精度取模计算
  *
  * @example
  * ```js
- * calcModulo(1.1, 1)
+ * modulo(1.1, 1)
  * //=> 0.1
  * ```
  *
  * @param {...number[]} args
  * @returns {number}
  */
-const calcModulo: CalcFunc = (...args: number[]): number => {
-    return flat(modulo, ...args)
+const modulo: CalcFunc = (...args: number[]): number => {
+    return flat(calc.modulo, ...args)
 }
 
 /**
@@ -141,14 +141,14 @@ const calcModulo: CalcFunc = (...args: number[]): number => {
  *
  * @example
  * ```js
- * calcExpr('((1.1+0.3)*4+2*3)/(3-1*0.1)-1*5')
+ * expr('((1.1+0.3)*4+2*3)/(3-1*0.1)-1*5')
  * //=> -1
  * ```
  *
  * @param {string} expr
  * @returns {number}
  */
-const calcExpr = (expr: string): number => {
+const expr = (expr: string): number => {
     const exprArr = getExprArray(expr)
 
     if (exprArr.length) {
@@ -159,23 +159,23 @@ const calcExpr = (expr: string): number => {
 }
 
 export {
-    calcAdd,
-    calcSubtract,
-    calcMul,
-    calcMultiply,
-    calcDivision,
-    calcDivide,
-    calcModulo,
-    calcExpr,
+    add,
+    subtract,
+    multiply,
+    mul,
+    division,
+    divide,
+    modulo,
+    expr,
 };
 
 export default {
-    add: calcAdd,
-    subtract: calcSubtract,
-    mul: calcMul,
-    multiply: calcMultiply,
-    division: calcDivision,
-    divide: calcDivide,
-    modulo: calcModulo,
-    expr: calcExpr,
+    add,
+    subtract,
+    multiply,
+    mul,
+    division,
+    divide,
+    modulo,
+    expr,
 };
