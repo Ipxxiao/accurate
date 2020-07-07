@@ -17,6 +17,8 @@ accuracy calculation for js. 解决Javascript精度计算（浮点数计算精�
 
 ``` base
 npm i accurate -S
+or
+yarn add accurate
 ```
 
 ## build with rollup

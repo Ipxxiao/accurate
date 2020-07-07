@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.exprArrayCalc = exports.getExprArray = void 0;
 var calc_1 = require("./calc");
 // 分隔符
 var DELIMITERS = {

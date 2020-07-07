@@ -9,6 +9,7 @@
 })(function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
+    exports.modulo = exports.division = exports.multiply = exports.subtract = exports.add = void 0;
     /**
      * 获取小数位数
      *

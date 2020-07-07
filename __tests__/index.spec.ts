@@ -1,5 +1,4 @@
 import accurate, { add, subtract, multiply, mul, division, divide, modulo, expr } from '../src/index'
-import { log } from '../src/_utils/index'
 
 const methods = ['add', 'subtract', 'multiply', 'mul', 'division', 'divide', 'modulo', 'expr']
 
@@ -73,29 +72,5 @@ describe('accurate', () => {
 		expect(accurate.expr('((1.1+0.3)*4+2*3)/(1.1%0.3-1*0.1)-1*5')).toEqual(111)
 		expect(accurate.expr('0.1')).toEqual(0.1)
 		expect(accurate.expr('1.1a + 0.3')).toEqual(NaN)
-	})
-})
-
-describe('log', () => {
-	it('should invoke success', () => {
-		let res = log('test')
-		expect(log).toBeInstanceOf(Function)
-		expect(res).toBeTruthy()
-	})
-
-	it('should return a function', () => {
-		let res = log('test')
-		expect(log).toBeInstanceOf(Function)
-		expect(res).toBeTruthy()
-		expect(res).toBeInstanceOf(Function)
-
-		let res2 = log('test', 'extra param')
-		expect(log).toBeInstanceOf(Function)
-		expect(res2).toBeTruthy()
-		expect(res2).toBeInstanceOf(Function)
-
-		let res3 = log()
-		expect(res3).toBeTruthy()
-		expect(res3).toBeInstanceOf(Function)
 	})
 })
