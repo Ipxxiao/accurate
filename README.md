@@ -6,7 +6,7 @@
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 [![NPM downloads](https://img.shields.io/npm/dm/accurate.svg?style=flat)](https://www.npmjs.com/package/accurate)
 [![Coverage Status](https://coveralls.io/repos/github/Ipxxiao/accurate/badge.svg?branch=master)](https://coveralls.io/github/Ipxxiao/accurate?branch=master)
-![Test Coveralls](https://github.com/Ipxxiao/accurate/workflows/Test%20Coveralls/badge.svg?branch=master)
+[![Test Coveralls](https://github.com/Ipxxiao/accurate/workflows/Test%20Coveralls/badge.svg?branch=master)](https://github.com/Ipxxiao/accurate/actions?workflow=Test%20Coveralls)
 
 Accurate is an precision calculation for JavaScript and Nodejs. 解决JavaScript与Node.js精度计算（浮点数计算精度）问题。
 
