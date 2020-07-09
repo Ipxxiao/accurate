@@ -152,7 +152,7 @@ export const getExprArray = (expr: string): string[] => {
 export const exprArrayCalc = (exprArray: string[]): number => {
     let accum: number = Number(exprArray[0])
 
-    for (let i = 0, len = exprArray.length; i < len; i++) {
+    for (let i: number = 0, len = exprArray.length; i < len; i++) {
         const item: string = exprArray[i]
 
         if (DELIMITERS[item]) {

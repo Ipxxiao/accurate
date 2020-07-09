@@ -122,7 +122,6 @@ export const division = (num1: number, num2: number): number => {
     const {
         int1,
         int2,
-        digits,
     } = getOffsetData(num1, num2);
 
     return int1 / int2;

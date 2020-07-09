@@ -22,7 +22,7 @@ interface CalcFunc {
 const flat = (calc: Function, ...args: number[]): number => {
     const len: number = args.length
     const first: number | number[] = args[0]
-    let accum = first
+    let accum: number = first
 
     if (len) {
         if (len === 1) {
@@ -33,7 +33,7 @@ const flat = (calc: Function, ...args: number[]): number => {
                 return first
             }
         } else {
-            for (let i = 1; i < len; i++) {
+            for (let i: number = 1; i < len; i++) {
                 const item: number | number[] = args[i]
 
                 if (Array.isArray(accum)) {
@@ -69,7 +69,7 @@ const flat = (calc: Function, ...args: number[]): number => {
 export const add: CalcFunc = (...args: number[]): number => {
     return flat(calc.add, ...args)
 }
-export const addition = add
+export const addition: CalcFunc = add
 
 /**
  * 精度减法计算
@@ -86,7 +86,7 @@ export const addition = add
 export const subtract: CalcFunc = (...args: number[]): number => {
     return flat(calc.subtract, ...args)
 }
-export const subtraction = subtract
+export const subtraction: CalcFunc = subtract
 
 /**
  * 精度乘法计算
@@ -103,8 +103,8 @@ export const subtraction = subtract
 export const multiply: CalcFunc = (...args: number[]): number => {
     return flat(calc.multiply, ...args)
 }
-export const mul = multiply
-export const multiplication = multiply
+export const mul: CalcFunc = multiply
+export const multiplication: CalcFunc = multiply
 
 /**
  * 精度除法计算
@@ -121,7 +121,7 @@ export const multiplication = multiply
 export const division: CalcFunc = (...args: number[]): number => {
     return flat(calc.division, ...args)
 }
-export const divide = division
+export const divide: CalcFunc = division
 
 /**
  * 精度取模计算
@@ -138,7 +138,7 @@ export const divide = division
 export const modulo: CalcFunc = (...args: number[]): number => {
     return flat(calc.modulo, ...args)
 }
-export const modulus = modulo
+export const modulus: CalcFunc = modulo
 
 /**
  * 算术表达式计算
@@ -153,7 +153,7 @@ export const modulus = modulo
  * @returns {number}
  */
 export const expr = (expr: string): number => {
-    const exprArr = getExprArray(expr)
+    const exprArr: string[] = getExprArray(expr)
 
     if (exprArr.length) {
         return exprArrayCalc(exprArr)
