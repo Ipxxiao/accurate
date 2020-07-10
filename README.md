@@ -118,12 +118,6 @@ accurate.expr('((1.1+0.3)*4+2*3)/(1.1%0.3-1*0.1)-1*5')
 111
 ```
 
-## Build with rollup
-
-``` base
-npm run build
-```
-
 ## More
 - [Docs](https://github.com/Ipxxiao/accurate/tree/master/docs)
 - [Test](https://github.com/Ipxxiao/accurate/blob/master/__tests__/index.spec.ts)

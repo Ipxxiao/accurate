@@ -4,7 +4,7 @@
     "description": "An precision calculation for JavaScript and Node.js.解决JavaScript与Node.js精度计算（小数、浮点数计算精度）问题。",
     "repository": {
         "type": "git",
-        "url": "https://github.com/Ipxxiao/accurate.git"
+        "url": "git+https://github.com/Ipxxiao/accurate.git"
     },
     "keywords": [
         "accurate",
@@ -34,8 +34,11 @@
         "js 浮点数计算"
     ],
     "homepage": "https://github.com/Ipxxiao/accurate",
-    "author": "Jonas Hsiao",
+    "author": "Jonas Hsiao <jonashsiao@icloud.com>",
     "license": "MIT",
+    "bugs": {
+      "url": "https://github.com/Ipxxiao/accurate/issues"
+    },
     "private": false,
     "main": "./libs/cjs",
     "files": [
@@ -84,10 +87,6 @@
         "@babel/plugin-transform-runtime": "^7.1.0",
         "@babel/preset-env": "^7.6.3",
         "@babel/preset-typescript": "^7.6.0",
-        "@rollup/plugin-babel": "^5.0.4",
-        "@rollup/plugin-commonjs": "^11.0.0",
-        "@rollup/plugin-node-resolve": "^8.1.0",
-        "@rollup/plugin-typescript": "^5.0.1",
         "@types/jest": "^24.0.18",
         "@types/node": "^12.7.12",
         "chalk": "^2.4.2",
@@ -101,9 +100,6 @@
         "jsdoc-to-markdown": "^5.0.2",
         "npm-run-all": "^4.1.5",
         "rimraf": "^3.0.0",
-        "rollup": "^1.20.0",
-        "rollup-plugin-terser": "^5.1.3",
-        "rollup-plugin-uglify": "^6.0.4",
         "ts-jest": "^24.1.0",
         "tslib": "^1.10.0",
         "typescript": "^3.6.4"
