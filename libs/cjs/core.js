@@ -99,7 +99,7 @@ exports.multiply = function (num1, num2) {
  * @returns {number}
  */
 exports.division = function (num1, num2) {
-    var _a = getOffsetData(num1, num2), int1 = _a.int1, int2 = _a.int2, digits = _a.digits;
+    var _a = getOffsetData(num1, num2), int1 = _a.int1, int2 = _a.int2;
     return int1 / int2;
 };
 /**

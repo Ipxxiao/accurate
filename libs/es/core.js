@@ -96,7 +96,7 @@ export const multiply = (num1, num2) => {
  * @returns {number}
  */
 export const division = (num1, num2) => {
-    const { int1, int2, digits, } = getOffsetData(num1, num2);
+    const { int1, int2, } = getOffsetData(num1, num2);
     return int1 / int2;
 };
 /**
