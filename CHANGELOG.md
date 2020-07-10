@@ -32,6 +32,10 @@ Changelog entries are classified using the following labels _(from [keep-a-chang
 
 </details>
 
+## 1.4.20 (2020-07-10)
+
+- Remove Rollup of dependencies
+
 ## 1.4.19 (2020-07-10)
 
 - Add changelog file

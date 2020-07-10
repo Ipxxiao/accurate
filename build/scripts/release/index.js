@@ -1,8 +1,8 @@
 /*
  * @Author: jsonchou
  * @Date: 2019-08-01 18:04:40
- * @Last Modified by: jsonchou
- * @Last Modified time: 2019-10-22 16:53:11
+ * @Last Modified by: jonas
+ * @Last Modified time: 2020-07-10 16:33:43
  */
 const path = require('path')
 const chalk = require('chalk')
@@ -55,7 +55,7 @@ let doPublish = async () => {
 	try {
 		execSync(`git add .`, { stdio: 'inherit' })
 		let logInfo = `release: v${version} ${RELEASE_LOG}`
-		execSync(`git commit -am "${logInfo}"`, { stdio: 'inherit' })
+		execSync(`git commit -m "${logInfo}"`, { stdio: 'inherit' })
 		execSync(`git push`, { stdio: 'inherit' })
 	} catch (err) {
 		console.log('git', err)
