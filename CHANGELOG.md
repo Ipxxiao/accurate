@@ -100,7 +100,7 @@ Changelog entries are classified using the following labels _(from [keep-a-chang
 
 - Improvements methods
 
-## 1.0.2 - 2019-04-10
+## 1.0.2 (2019-04-10)
 
 First release
 

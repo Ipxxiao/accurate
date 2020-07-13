@@ -1,4 +1,4 @@
-# Accurate
+# Description
 
 [![NPM version](https://img.shields.io/npm/v/accurate.svg?style=flat)](https://www.npmjs.com/package/accurate)
 [![Build Status](https://travis-ci.org/Ipxxiao/accurate.svg?branch=master)](https://travis-ci.org/Ipxxiao/accurate)
@@ -25,7 +25,7 @@ yarn add accurate
 
 ## Features
 
-- Supports numbers, decimals, strings, arrays, and matrices.
+- Supports numbers, decimals, strings, arrays and matrices.
 - Contains arithmetic expression parser.
 - Runs on any JavaScript engine.
 - Is easily extensible.
