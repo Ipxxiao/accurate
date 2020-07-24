@@ -4,7 +4,7 @@
  * @see doc https://github.com/Ipxxiao/accurate/tree/master/docs
  */
 
-import calc from './core'
+import calc from 'accurate-core'
 import { getExprArray, exprArrayCalc } from './expr'
 
 interface CalcFunc {

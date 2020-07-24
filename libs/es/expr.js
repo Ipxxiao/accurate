@@ -1,4 +1,4 @@
-import { add, subtract, multiply, division, modulo } from './core';
+import { add, subtract, multiply, division, modulo } from 'accurate-core';
 // 分隔符
 const DELIMITERS = {
     '(': true,

@@ -4,13 +4,13 @@
         if (v !== undefined) module.exports = v;
     }
     else if (typeof define === "function" && define.amd) {
-        define(["require", "exports", "./core"], factory);
+        define(["require", "exports", "accurate-core"], factory);
     }
 })(function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.exprArrayCalc = exports.getExprArray = void 0;
-    var core_1 = require("./core");
+    var accurate_core_1 = require("accurate-core");
     // 分隔符
     var DELIMITERS = {
         '(': true,
@@ -186,19 +186,19 @@
                 }
                 switch (item) {
                     case '+':
-                        accum = core_1.add(num1, num2);
+                        accum = accurate_core_1.add(num1, num2);
                         break;
                     case '-':
-                        accum = core_1.subtract(num1, num2);
+                        accum = accurate_core_1.subtract(num1, num2);
                         break;
                     case '*':
-                        accum = core_1.multiply(num1, num2);
+                        accum = accurate_core_1.multiply(num1, num2);
                         break;
                     case '/':
-                        accum = core_1.division(num1, num2);
+                        accum = accurate_core_1.division(num1, num2);
                         break;
                     case '%':
-                        accum = core_1.modulo(num1, num2);
+                        accum = accurate_core_1.modulo(num1, num2);
                         break;
                 }
             }

@@ -1,7 +1,7 @@
 {
     "name": "accurate",
-    "version": "1.4.21",
-    "description": "An precision calculation for JavaScript and Node.js.解决JavaScript与Node.js精度计算（小数、浮点数计算精度）问题。",
+    "version": "1.5.0",
+    "description": "An precision calculation for JavaScript and Node.js. supports numbers, decimals, strings, arrays, matrices and expression. 解决JavaScript与Node.js精度计算（小数、浮点数计算精度）问题。支持数字、小数、字符串、数组、矩阵和表达式。",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/Ipxxiao/accurate.git"
@@ -131,5 +131,8 @@
             }
         },
         "collectCoverage": true
+    },
+    "dependencies": {
+        "accurate-core": "^1.0.1"
     }
 }

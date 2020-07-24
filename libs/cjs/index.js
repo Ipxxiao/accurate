@@ -29,7 +29,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.expr = exports.modulus = exports.modulo = exports.divide = exports.division = exports.multiplication = exports.mul = exports.multiply = exports.subtraction = exports.subtract = exports.addition = exports.add = void 0;
-var core_1 = __importDefault(require("./core"));
+var accurate_core_1 = __importDefault(require("accurate-core"));
 var expr_1 = require("./expr");
 /**
  * 扁平化数组
@@ -95,7 +95,7 @@ exports.add = function () {
     for (var _i = 0; _i < arguments.length; _i++) {
         args[_i] = arguments[_i];
     }
-    return flat.apply(void 0, __spread([core_1.default.add], args));
+    return flat.apply(void 0, __spread([accurate_core_1.default.add], args));
 };
 exports.addition = exports.add;
 /**
@@ -115,7 +115,7 @@ exports.subtract = function () {
     for (var _i = 0; _i < arguments.length; _i++) {
         args[_i] = arguments[_i];
     }
-    return flat.apply(void 0, __spread([core_1.default.subtract], args));
+    return flat.apply(void 0, __spread([accurate_core_1.default.subtract], args));
 };
 exports.subtraction = exports.subtract;
 /**
@@ -135,7 +135,7 @@ exports.multiply = function () {
     for (var _i = 0; _i < arguments.length; _i++) {
         args[_i] = arguments[_i];
     }
-    return flat.apply(void 0, __spread([core_1.default.multiply], args));
+    return flat.apply(void 0, __spread([accurate_core_1.default.multiply], args));
 };
 exports.mul = exports.multiply;
 exports.multiplication = exports.multiply;
@@ -156,7 +156,7 @@ exports.division = function () {
     for (var _i = 0; _i < arguments.length; _i++) {
         args[_i] = arguments[_i];
     }
-    return flat.apply(void 0, __spread([core_1.default.division], args));
+    return flat.apply(void 0, __spread([accurate_core_1.default.division], args));
 };
 exports.divide = exports.division;
 /**
@@ -176,7 +176,7 @@ exports.modulo = function () {
     for (var _i = 0; _i < arguments.length; _i++) {
         args[_i] = arguments[_i];
     }
-    return flat.apply(void 0, __spread([core_1.default.modulo], args));
+    return flat.apply(void 0, __spread([accurate_core_1.default.modulo], args));
 };
 exports.modulus = exports.modulo;
 /**

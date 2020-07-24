@@ -32,6 +32,10 @@ Changelog entries are classified using the following labels _(from [keep-a-chang
 
 </details>
 
+## 1.5.1 (2020-07-24)
+
+- Changed core.ts to accurate-core dependencies
+
 ## 1.4.21 (2020-07-23)
 
 - Security bump lodash from 4.17.15 to 4.17.19. See ([pull/2](https://github.com/Ipxxiao/accurate/pull/2))

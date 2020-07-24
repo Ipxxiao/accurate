@@ -1,4 +1,6 @@
-import accurate, { add, addition, subtract, subtraction, multiply, mul, multiplication, division, divide, modulo, modulus, expr, } from '../src/index'
+import accurate, {
+	add, addition, subtract, subtraction, multiply, mul, multiplication, division, divide, modulo, modulus, expr
+} from '../src/index'
 
 const methods = ['add', 'subtract', 'multiply', 'division', 'modulo', 'expr']
 

@@ -7,7 +7,8 @@
 [![NPM downloads](https://img.shields.io/npm/dm/accurate.svg?style=flat)](https://www.npmjs.com/package/accurate)
 [![Coverage Status](https://coveralls.io/repos/github/Ipxxiao/accurate/badge.svg?branch=master)](https://coveralls.io/github/Ipxxiao/accurate?branch=master)
 
-Accurate is an precision calculation for JavaScript and Nodejs. 解决JavaScript与Node.js精度计算（浮点数计算精度）问题。
+Accurate is an precision calculation for JavaScript and Nodejs. supports numbers, decimals, strings, arrays, matrices and expression.
+解决JavaScript与Node.js精度计算（浮点数计算精度）问题。支持数字、小数、字符串、数组、矩阵和表达式。
 
 ## Browsers support
 
@@ -67,8 +68,8 @@ addition(1.1, 0.3, 0.1)
 ``` javascript
 >
 1.1 - 0.2 - 0.1
-accurate.subtract(1.1, 0.2, 0.1)
-subtraction(1.1, 0.2, 0.1)
+accurate.subtract([1.1, 0.2, 0.1])
+subtraction([1.1, 0.2, 0.1])
 
 <-
 0.8000000000000002
@@ -80,9 +81,9 @@ subtraction(1.1, 0.2, 0.1)
 ``` javascript
 >
 1.1 * 0.1 * 0.2
-accurate.multiply(1.1, 0.1, 0.2)
-accurate.mul(1.1, 0.1, 0.2)
-multiplication(1.1, 0.1, 0.2)
+accurate.multiply([1.1, [0.1, 0.2]])
+accurate.mul([1.1, [0.1, 0.2]])
+multiplication([1.1, [0.1, 0.2]])
 
 <-
 0.022000000000000006
@@ -95,8 +96,8 @@ multiplication(1.1, 0.1, 0.2)
 ``` javascript
 >
 1.1 / 10 / 2
-accurate.division(1.1, 10, 2)
-accurate.divide(1.1, 10, 2)
+accurate.division([1.1, 10], 2)
+accurate.divide([1.1, 10], 2)
 
 <-
 0.05500000000000001

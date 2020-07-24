@@ -1092,6 +1092,11 @@ abab@^2.0.0:
   resolved "https://registry.yarnpkg.com/abab/-/abab-2.0.3.tgz#623e2075e02eb2d3f2475e49f99c91846467907a"
   integrity sha512-tsFzPpcttalNjFBCFMqsKYQcWxxen1pgJR56by//QwvJc4/OUS3kPOOttx2tSIfjsylB0pYu7f5D3K1RCxUnUg==
 
+accurate-core@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/accurate-core/-/accurate-core-1.0.1.tgz#6a5ffddf6e13925b196054f06f71cf68543a83f6"
+  integrity sha512-/SBnnoOkGy0cEuu4Qirx/wjyGMjjbqi3bHUih7aL3IwscKFs7b5vsAarUVQDzv0fXy8P5kj/hm0yuWMqrP+G2w==
+
 acorn-globals@^4.1.0:
   version "4.3.4"
   resolved "https://registry.yarnpkg.com/acorn-globals/-/acorn-globals-4.3.4.tgz#9fa1926addc11c97308c4e66d7add0d40c3272e7"
