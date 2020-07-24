@@ -7,8 +7,8 @@
 [![NPM downloads](https://img.shields.io/npm/dm/accurate.svg?style=flat)](https://www.npmjs.com/package/accurate)
 [![Coverage Status](https://coveralls.io/repos/github/Ipxxiao/accurate/badge.svg?branch=master)](https://coveralls.io/github/Ipxxiao/accurate?branch=master)
 
-Accurate is an precision calculation for JavaScript and Nodejs. supports numbers, decimals, strings, arrays, matrices and expression.
-解决JavaScript与Node.js精度计算（浮点数计算精度）问题。支持数字、小数、字符串、数组、矩阵和表达式。
+- Accurate is an precision calculation for JavaScript and Nodejs. supports numbers, decimals, strings, arrays, matrices and expression.
+- 解决JavaScript与Node.js精度计算（浮点数计算精度）问题。支持数字、小数、字符串、数组、矩阵和表达式。
 
 ## Browsers support
 
