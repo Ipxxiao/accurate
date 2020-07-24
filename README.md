@@ -40,9 +40,13 @@ yarn add accurate
 ## Usage
 
 ``` javascript 
-import accurate, { add, addition, subtract, subtraction, multiply, mul, multiplication, division, divide, modulo, modulus, expr, } from 'accurate'
+import accurate, {
+  add, addition, subtract, subtraction, multiply, mul, multiplication, division, divide, modulo, modulus, expr
+} from 'accurate'
 or
-const accurate, { add, addition, subtract, subtraction, multiply, mul, multiplication, division, divide, modulo, modulus, expr, } = require('accurate')
+const accurate, {
+  add, addition, subtract, subtraction, multiply, mul, multiplication, division, divide, modulo, modulus, expr
+} = require('accurate')
 ```
 
 
