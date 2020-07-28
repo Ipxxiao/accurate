@@ -1,4 +1,4 @@
-const cleanScript = require('./clean')
+const cleanScript = require('./clean.ts')
 const { zax } = require('../../../package.json')
 
 const { cleanDirs } = zax

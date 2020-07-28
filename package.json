@@ -63,8 +63,8 @@
         "doc:index": "rimraf './docs/*.md' && jsdoc2md --files ./src/index.ts --no-cache --configure ./jsdoc2md.json > ./docs/README.md",
         "docs": "npm-run-all -p doc:**",
         "build": "npm-run-all -p build:**",
-        "server": "NODE_ENV=production  GATEWAY=outer  node ./server/index.js",
-        "clean": "node ./build/scripts/clean",
+        "server": "NODE_ENV=production  GATEWAY=outer  node ./server/index.ts",
+        "clean": "node ./build/scripts/clean/index.ts",
         "release": "node ./build/scripts/release $RELEASE_LOG",
         "report": "codecov -t $CODECOV_TOKEN",
         "test": "jest --coverage=true"

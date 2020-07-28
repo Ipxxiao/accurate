@@ -2,17 +2,17 @@
  * @Author: jsonchou
  * @Date: 2019-08-01 18:04:40
  * @Last Modified by: jonas
- * @Last Modified time: 2020-07-10 16:33:43
+ * @Last Modified time: 2020-07-28 18:53:39
  */
 const path = require('path')
 const chalk = require('chalk')
 const doneRainbow = require('done-rainbow')
 const execSync = require('child_process').execSync
 const { version, zax } = require('../../../package.json')
-const checkNpm = require('./checkNpm')
+const checkNpm = require('./checkNpm.ts')
 const RELEASE_LOG = process.argv[2] || ''
 
-const { innerModule, needBuild, test, docs, cleanDirs } = zax
+const { innerModule, needBuild, docs, cleanDirs } = zax
 
 let increaseVersion = () => {
 	let prefix = version.slice(0, version.lastIndexOf('.'))
@@ -46,7 +46,7 @@ let doPublish = async () => {
 
 	cleanDirs && cleanDirs.length && await doRun('clean')
 
-	test && await doRun('test')
+	zax.test && await doRun('test')
 
 	docs && await doRun('docs')
 
