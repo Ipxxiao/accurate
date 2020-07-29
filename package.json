@@ -65,7 +65,7 @@
         "build": "npm-run-all -p build:**",
         "server": "NODE_ENV=production  GATEWAY=outer  node ./server/index.ts",
         "clean": "node ./build/scripts/clean/index.ts",
-        "release": "node ./build/scripts/release $RELEASE_LOG",
+        "release": "node ./build/scripts/release/index.ts $RELEASE_LOG",
         "report": "codecov -t $CODECOV_TOKEN",
         "test": "jest --coverage=true"
     },

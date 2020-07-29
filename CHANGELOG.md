@@ -32,6 +32,10 @@ Changelog entries are classified using the following labels _(from [keep-a-chang
 
 </details>
 
+## 1.5.2 (2020-07-29)
+
+- Changed homepage link
+
 ## 1.5.1 (2020-07-24)
 
 - Changed core.ts to accurate-core dependencies
