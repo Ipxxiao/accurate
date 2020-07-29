@@ -132,6 +132,10 @@ accurate.expr('((1.1 + 0.3) * 4 + 2 * 3) / (1.1 % 0.3 - 1 * 0.1) - 1 * 5')
 111
 ```
 
+## [Changelog](https://github.com/Ipxxiao/accurate/blob/master/CHANGELOG.md)
+
+## [License](https://github.com/Ipxxiao/accurate/blob/master/LICENSE)
+
 ## More
 - [Docs](https://github.com/Ipxxiao/accurate/tree/master/docs)
 - [Test](https://github.com/Ipxxiao/accurate/blob/master/__tests__/index.spec.ts)
