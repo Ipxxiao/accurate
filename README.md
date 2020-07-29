@@ -32,7 +32,6 @@ yarn add accurate
 - Is easily extensible.
 - Open source.
 
-
 - 支持数字、小数、字符串、数组和矩阵。
 - 包含算术表达式解析器。
 - 运行在任何JavaScript引擎。
@@ -132,10 +131,9 @@ accurate.expr('((1.1 + 0.3) * 4 + 2 * 3) / (1.1 % 0.3 - 1 * 0.1) - 1 * 5')
 111
 ```
 
-## [Changelog](https://github.com/Ipxxiao/accurate/blob/master/CHANGELOG.md)
-
-## [License](https://github.com/Ipxxiao/accurate/blob/master/LICENSE)
 
 ## More
+- [Changelog](https://github.com/Ipxxiao/accurate/blob/master/CHANGELOG.md)
+- [License](https://github.com/Ipxxiao/accurate/blob/master/LICENSE)
 - [Docs](https://github.com/Ipxxiao/accurate/tree/master/docs)
 - [Test](https://github.com/Ipxxiao/accurate/blob/master/__tests__/index.spec.ts)
