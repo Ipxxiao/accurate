@@ -1,6 +1,6 @@
 {
     "name": "accurate",
-    "version": "1.5.1",
+    "version": "1.5.2",
     "description": "An precision calculation for JavaScript and Node.js. supports numbers, decimals, strings, arrays, matrices and expression. 解决JavaScript与Node.js精度计算（小数、浮点数计算精度）问题。支持数字、小数、字符串、数组、矩阵和表达式。",
     "repository": {
         "type": "git",
