@@ -32,6 +32,10 @@ Changelog entries are classified using the following labels _(from [keep-a-chang
 
 </details>
 
+## 1.5.3 (2020-07-31)
+
+- Remove Codecov of dependencies
+
 ## 1.5.2 (2020-07-29)
 
 - Changed homepage link
