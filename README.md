@@ -8,7 +8,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/Ipxxiao/accurate/badge.svg?branch=master)](https://coveralls.io/github/Ipxxiao/accurate?branch=master)
 
 - Accurate is an precision calculation for JavaScript and Nodejs. supports numbers, decimals, strings, arrays, matrices and expression.
-- 解决JavaScript与Node.js精度计算（浮点数计算精度）问题。支持数字、小数、字符串、数组、矩阵和表达式。
+- 解决 JavaScript 与 Node.js 精度计算（浮点数计算精度）问题。支持数字、小数、字符串、数组、矩阵和表达式。
 
 ## Browsers support
 
@@ -34,7 +34,7 @@ yarn add accurate
 
 - 支持数字、小数、字符串、数组和矩阵。
 - 包含算术表达式解析器。
-- 运行在任何JavaScript引擎。
+- 运行在任何 JavaScript 引擎。
 - 易于扩展。
 - 开源的。
 
