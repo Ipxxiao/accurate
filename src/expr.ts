@@ -28,6 +28,8 @@ export const getExprArray = (expr: string): string[] => {
     let keys: string[] = []
     // 子数组键值的索引
     let idx: number = -1
+    // 标记括号层级
+    let parenthesis = 0
 
     for (const i in originalArr) {
         const item: string = originalArr[i].trim()
@@ -39,6 +41,7 @@ export const getExprArray = (expr: string): string[] => {
         } else if (DELIMITERS[item]) {
             switch (item) {
                 case '(':
+                    ++parenthesis
                     point = keys[idx]
                     // 创建子数组（优先计算）
                     sub[i] = []
@@ -52,7 +55,7 @@ export const getExprArray = (expr: string): string[] => {
 
                     // 数组维度加1
                     keys.splice(++idx, 0, i)
-                    break;
+                    break
 
                 case '*':
                 case '/':
@@ -88,22 +91,33 @@ export const getExprArray = (expr: string): string[] => {
                     } else {
                         exprArr.push(item)
                     }
-                    break;
+                    break
 
                 case '+':
                 case '-':
                     // 指向子数组
                     if (idx >= 0) {
-                        sub[keys[idx]].push(item)
+                        // 两边括号已完成，并且存在表达式（存在过优先计算）
+                        if (!parenthesis && sub[keys[idx]].length >= 2) {
+                            // 数组维度减1
+                            --idx
+                        }
+                        // 指向子数组
+                        if (idx >= 0) {
+                            sub[keys[idx]].push(item)
+                        } else {
+                            exprArr.push(item)
+                        }
                     } else {
                         exprArr.push(item)
                     }
-                    break;
+                    break
 
                 case ')':
+                    --parenthesis
                     // 数组维度减1
                     --idx
-                    break;
+                    break
             }
         } else if (Number.isFinite(Number(item))) {
             point = keys[idx]
@@ -122,15 +136,15 @@ export const getExprArray = (expr: string): string[] => {
                     case '/':
                     case '%':
 
-                        // 前一个为子数组，并且存在表达式（有过优先计算）
+                        // 前一个为子数组，并且存在表达式（存在过优先计算）
                         if (prevIdx >= 0 && sub[keys[prevIdx]].length >= 2) {
                             // 数组维度减1
                             --idx
                         }
-                        break;
+                        break
 
                     default:
-                        break;
+                        break
                 }
             } else {
                 exprArr.push(item)
@@ -187,23 +201,23 @@ export const exprArrayCalc = (exprArray: string[]): number => {
             switch (item) {
                 case '+':
                     accum = add(num1, num2)
-                    break;
+                    break
 
                 case '-':
                     accum = subtract(num1, num2)
-                    break;
+                    break
 
                 case '*':
                     accum = multiply(num1, num2)
-                    break;
+                    break
 
                 case '/':
                     accum = division(num1, num2)
-                    break;
+                    break
 
                 case '%':
                     accum = modulo(num1, num2)
-                    break;
+                    break
             }
         }
     }

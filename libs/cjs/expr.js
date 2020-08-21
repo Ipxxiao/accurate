@@ -29,6 +29,8 @@ exports.getExprArray = function (expr) {
     var keys = [];
     // 子数组键值的索引
     var idx = -1;
+    // 标记括号层级
+    var parenthesis = 0;
     for (var i in originalArr) {
         var item = originalArr[i].trim();
         // 当前指向的子数组键值
@@ -39,6 +41,7 @@ exports.getExprArray = function (expr) {
         else if (DELIMITERS[item]) {
             switch (item) {
                 case '(':
+                    ++parenthesis;
                     point = keys[idx];
                     // 创建子数组（优先计算）
                     sub[i] = [];
@@ -92,13 +95,25 @@ exports.getExprArray = function (expr) {
                 case '-':
                     // 指向子数组
                     if (idx >= 0) {
-                        sub[keys[idx]].push(item);
+                        // 两边括号已完成，并且存在表达式（存在过优先计算）
+                        if (!parenthesis && sub[keys[idx]].length >= 2) {
+                            // 数组维度减1
+                            --idx;
+                        }
+                        // 指向子数组
+                        if (idx >= 0) {
+                            sub[keys[idx]].push(item);
+                        }
+                        else {
+                            exprArr.push(item);
+                        }
                     }
                     else {
                         exprArr.push(item);
                     }
                     break;
                 case ')':
+                    --parenthesis;
                     // 数组维度减1
                     --idx;
                     break;
@@ -117,7 +132,7 @@ exports.getExprArray = function (expr) {
                     case '*':
                     case '/':
                     case '%':
-                        // 前一个为子数组，并且存在表达式（有过优先计算）
+                        // 前一个为子数组，并且存在表达式（存在过优先计算）
                         if (prevIdx >= 0 && sub[keys[prevIdx]].length >= 2) {
                             // 数组维度减1
                             --idx;
