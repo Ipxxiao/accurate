@@ -60,5 +60,7 @@ describe('accurate', () => {
 		expect(accurate.expr('0.3 - 1 * 0.1 - 1 * 5')).toEqual(-4.8)
 		expect(accurate.expr('0.1')).toEqual(0.1)
 		expect(accurate.expr('1.1a + 0.3')).toEqual(NaN)
+		expect(accurate.expr('((1.1 + 0.3) * 4 + 2 * 3) / (1.1 % 0.3 - 1 * 0.1) - 1 * 5 * 2 + 5 - 2 - 2 * 3')).toEqual(103)
+		expect(accurate.expr('((1.1 + 0.3) * 4 + 2 * 3 - 2 + 2 * 5 - 3) / (1.1 % 0.3 - 1 * 0.1) - 1 * 5 * (2 + 5) - 2 - 2 * 3')).toEqual(123)
 	})
 })

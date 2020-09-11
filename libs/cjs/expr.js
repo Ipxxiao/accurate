@@ -132,6 +132,8 @@ exports.getExprArray = function (expr) {
                     case '*':
                     case '/':
                     case '%':
+                    case '+':
+                    case '-':
                         // 前一个为子数组，并且存在表达式（存在过优先计算）
                         if (prevIdx >= 0 && sub[keys[prevIdx]].length >= 2) {
                             // 数组维度减1
