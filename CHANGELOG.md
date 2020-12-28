@@ -32,6 +32,9 @@ Changelog entries are classified using the following labels _(from [keep-a-chang
 
 </details>
 
+## 1.5.6 (2020-12-28)
+- Security update jest version
+
 ## 1.5.5 (2020-09-11)
 
 - Fixed expression evaluator

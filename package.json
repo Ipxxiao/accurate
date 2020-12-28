@@ -93,7 +93,7 @@
         "eslint": "^7.4.0",
         "fs-extra": "^8.1.0",
         "glob": "^7.1.4",
-        "jest": "^24.9.0",
+        "jest": "^26.6.3",
         "jsdoc-babel": "^0.5.0",
         "jsdoc-to-markdown": "^5.0.2",
         "npm-run-all": "^4.1.5",
