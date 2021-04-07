@@ -1397,10 +1397,10 @@ abab@^2.0.3:
   resolved "https://registry.yarnpkg.com/abab/-/abab-2.0.5.tgz#c0b678fb32d60fc1219c784d6a826fe385aeb79a"
   integrity sha512-9IK9EadsbHo6jLWIpxpR6pL0sazTXV6+SQv25ZB+F7Bj9mJNaOc4nCRabwd5M/JwmUa8idz6Eci6eKfJryPs6Q==
 
-accurate-core@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/accurate-core/-/accurate-core-1.0.2.tgz#618a10bba6264cfd4855c2f3261e58d7f284a249"
-  integrity sha512-7+Q6I2R7kbiQcfjgzW1L1Uv+MXF13Ju3GHZyoGyNh5YPc510mdwF1/01rxWIWSs4z0nn7+APQk8Ok86/L7cUVA==
+accurate-core@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/accurate-core/-/accurate-core-1.0.5.tgz#4530ade74b665fd6ae81205fbe8c3110d671d135"
+  integrity sha512-+Y3PufwABAVeu3ubBgCBXwCuG0hWpe7JzjSDlCMoWA9bmc5E7mJY3xfbAVyxfB+75hK+NsOxcxgfiqHvQf15pA==
 
 acorn-globals@^6.0.0:
   version "6.0.0"

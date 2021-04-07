@@ -103,7 +103,7 @@
         "typescript": "^3.6.4"
     },
     "dependencies": {
-        "accurate-core": "^1.0.2"
+        "accurate-core": "^1.0.5"
     },
     "jest": {
         "transform": {
