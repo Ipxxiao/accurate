@@ -1,7 +1,7 @@
 # Accurate &middot; [![NPM version](https://img.shields.io/npm/v/accurate.svg?style=flat)](https://www.npmjs.com/package/accurate) [![NPM downloads](https://img.shields.io/npm/dm/accurate.svg?style=flat)](https://www.npmjs.com/package/accurate) [![Build Status](https://travis-ci.org/Ipxxiao/accurate.svg?branch=master)](https://travis-ci.org/Ipxxiao/accurate) [![Coverage Status](https://coveralls.io/repos/github/Ipxxiao/accurate/badge.svg?branch=master)](https://coveralls.io/github/Ipxxiao/accurate?branch=master) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
-- Accurate is an precision calculation for JavaScript and Nodejs. supports numbers, decimals, strings, arrays, matrices and expression.
-- 解决 JavaScript 与 Node.js 精度计算（浮点数计算精度）问题。支持数字、小数、字符串、数组、矩阵和表达式。
+- Accurate is an precision calculation for JavaScript and Nodejs. supports numbers, decimals, strings, arrays, multidimensional array and expression.
+- 解决 JavaScript 与 Node.js 精度计算（浮点数计算精度）问题。支持数字、小数、字符串、数组、多维数组和表达式。
 
 ## Browsers support
 
@@ -19,13 +19,13 @@ yarn add accurate
 
 ## Features
 
-- Supports numbers, decimals, strings, arrays and matrices.
+- Supports numbers, decimals, strings, arrays and multidimensional array.
 - Contains arithmetic expression parser.
 - Runs on any JavaScript engine.
 - Is easily extensible.
 - Open source.
 
-- 支持数字、小数、字符串、数组和矩阵。
+- 支持数字、小数、字符串、数组和多维数组。
 - 包含算术表达式解析器。
 - 运行在任何 JavaScript 引擎。
 - 易于扩展。
