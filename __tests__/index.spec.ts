@@ -53,6 +53,11 @@ describe('accurate', () => {
 	})
 
 	it(`expr`, () => {
+		const a = 0.3
+		const b = 0.1
+
+		expect(accurate.expr(`${a}-${b}`)).toEqual(0.2)
+		expect(accurate.expr(`${a} - ${b}`)).toEqual(0.2)
 		expect(accurate.expr('1+3*4')).toEqual(13)
 		expect(accurate.expr('(1+3*4)*4')).toEqual(52)
 		expect(accurate.expr('((1.1+0.3)*4+2*3)/(1.1%0.3-1*0.1)-1*5')).toEqual(111)

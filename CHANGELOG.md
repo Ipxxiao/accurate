@@ -32,6 +32,10 @@ Changelog entries are classified using the following labels _(from [keep-a-chang
 
 </details>
 
+## 1.5.8 (2022-02-23)
+
+-   Security update of dependabot alerts
+
 ## 1.5.7 (2021-04-07)
 
 -   Security update y18n version
