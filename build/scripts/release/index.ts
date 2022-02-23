@@ -56,7 +56,7 @@ let doPublish = async () => {
 		execSync(`git add .`, { stdio: 'inherit' })
 		let logInfo = `release: v${version} ${RELEASE_LOG}`
 		execSync(`git commit -m "${logInfo}"`, { stdio: 'inherit' })
-		execSync(`git push`, { stdio: 'inherit' })
+		// execSync(`git push`, { stdio: 'inherit' })
 	} catch (err) {
 		console.log('git', err)
 		throw err
